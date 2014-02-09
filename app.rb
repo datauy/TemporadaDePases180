@@ -8,10 +8,10 @@ class App < Sinatra::Base
 
   register Sinatra::Partial
 
-  helpers Helpers::Assets 
+  helpers Helpers::Assets
   helpers Helpers::Rankings
 
-  APP_DOMAIN = 'data.180.com.uy'
+  APP_DOMAIN = 'mutualistas.datauy.org'
 
   configure do
     set :views, root_path('views')
@@ -38,7 +38,7 @@ class App < Sinatra::Base
       cache_control :public, :must_revalidate, max_age: 60 * 60 * 24
 
       departamento = 'montevideo' unless departamento
-      # calcular ranking a partir de parametros 
+      # calcular ranking a partir de parametros
       prioridades = get_prioridades(params)
       rankings = get_rankings(prioridades)
 
