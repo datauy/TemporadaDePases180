@@ -1,0 +1,132 @@
+<div class="formulario">
+  <h3>Contestá estas preguntas y elegí hasta tres prioridades:</h3>
+  <form id="preguntas-form" action="/departamento" method="POST" autocomplete="off" class="form-horizontal">
+
+    <div class="row">
+
+      <div class="col-md-6"> <!-- primera columna -->
+        <div class="pull-right">
+
+          <div class="form-group">
+            Consultas de Ginecologia: 
+            <label>
+              Si <input type="radio" name="opcionGinecologia" id="ginecologiaRadioSi" value="true" checked>
+            </label>
+            <label>
+              No <input type="radio" name="opcionGinecologia" id="ginecologiaRadioNo" value="false">
+            </label>                  
+          </div>
+          <div class="form-group">
+            Consultas de Pediatría:
+            <label>
+              Si <input type="radio" name="opcionPediatria" id="pediatriaRadioSi" value="true" checked>
+            </label>
+            <label>
+              No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false">
+            </label> 
+            <!--<span class="help-tooltip help-icon" title="Vas a tener a niños afiliados a la mutualista?"></span>-->
+          </div>
+          <div class="form-group">
+            Afiliado de FONASA:
+            <label>
+              Si <input type="radio" name="opcionFonasa" id="fonasaRadioSi" value="true" checked>
+            </label>
+            <label>
+              No <input type="radio" name="opcionFonasa" id="fonasaRadioNo" value="false">
+            </label>
+          </div>
+          <div class="form-group">
+            Departamento:
+            <select id="departamento" name="departamento" placeholder=".col-xs-4">
+              <% ['montevideo','canelones','florida','flores','rio negro', 'tacuarembo'].sort.each do |sel_departamento| %>
+                <option value="<%= sel_departamento %>" <% if departamento == sel_departamento %>selected="selected"<% end %>>
+                  <%= sel_departamento.capitalize! %>
+                </option>
+              <% end %>
+            </select>
+          </div>
+
+        </div> <!-- pull-right -->
+
+      </div> <!-- primera columna -->
+
+      <div class="col-md-1 separadorLinea"></div> <!-- separador -->
+
+      <div class="col-md-5"> <!-- tercera columna -->
+        <div class="pull-left">
+
+          <div class="form-group">           
+            <label class="checkbox-inline">
+              <input type="checkbox" id="checkboxPrecio" name="checkboxPrecio" value="optionPrecio"> Precio de los tickets
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-inline">
+              <input type="checkbox" id="checkboxTiempos" name="checkboxTiempos" value="optionTiempos"> Tiempos de espera para consulta
+            </label>
+          </div>
+          <div class="form-group">
+           <label class="checkbox-inline">
+              <input type="checkbox" id="checkboxDerechos" name="checkboxDerechos" value="optionDerechos"> Derechos de los usuarios
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-inline">
+              <input type="checkbox" id="checkboxCantidad" name="checkboxCantidad" value="optionCantidad"> Cantidad de personal disponible
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-inline">
+              <input type="checkbox" id="checkboxServicios" name="checkboxServicios" value="optionServicios"> Servicios para niños y embarazadas
+            </label>
+          </div>
+
+        </div> <!-- pull-left -->
+      </div> <!-- tercera columna -->
+
+    </div> <!-- row -->
+
+    <div class="row">
+      <input type="submit" name="submit" class="btn btn-danger btn-lg" value="¡Buscar!" />
+    </div>
+  </form>
+</div> <!-- formulario -->
+
+<section class="resultados" <% if prioridades.empty? %>style="display: none;" <% end %>>
+  <h3><% if (prioridades.length > 1) %> Ranking de prestadores de salud de <%= departamento %>, considerando consultas <%= prioridades[:consultas].join(', ') %><% if prioridades[:fonasa] %>  para afiliados por FONASA <% end %>, priorizando <%= prioridades[:prioridades].join(', ') %>: <% end %></h3>
+
+
+  <div id="carousel-resultados" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% for i in 0..(rankings.length-1) do %>
+      <li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li>
+    <% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+
+    <% for ranking in rankings do %>
+      <div class="item<% if ranking == rankings.first %> active<% end %>">
+        <%= partial :resultado, locals: { ranking: ranking } %>
+      </div> 
+    <% end %>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
+    <img src="<%= asset_path('images/izquierda.png') %>">
+  </a>
+  <a class="right carousel-control" href="#carousel-resultados" data-slide="next">
+    <img src="<%= asset_path('images/derecha.png') %>">
+  </a>
+</div>
+
+  <p class="pie-de-tabla pull-left">Datos extraidos de la planilla de indicadores publicada por el Ministerio de Salud Publica.</p>
+  <p class="pie-de-tabla pull-left">Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
+</section>
+
+<section id="mequierocambiar">
+ ¡ Me quiero cambiar !
+</section>
