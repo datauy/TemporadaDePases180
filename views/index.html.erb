@@ -1,5 +1,5 @@
 <div class="formulario">
-  <h3>Contestá estas preguntas y elegí hasta tres prioridades:</h3>
+  <h3>Contestá estas preguntas y elegí una prioridad:</h3>
   <form id="preguntas-form" action="/departamento" method="POST" autocomplete="off" class="form-horizontal">
 
     <div class="row">
@@ -56,28 +56,28 @@
         <div class="pull-left">
 
           <div class="form-group">           
-            <label class="checkbox-inline">
-              <input type="checkbox" id="checkboxPrecio" name="checkboxPrecio" value="optionPrecio"> Precio de los tickets
+            <label class="radio-inline">
+              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="costo"> Precio de los tickets
             </label>
           </div>
           <div class="form-group">
-            <label class="checkbox-inline">
-              <input type="checkbox" id="checkboxTiempos" name="checkboxTiempos" value="optionTiempos"> Tiempos de espera para consulta
+            <label class="radio-inline">
+              <input type="radio" id="radioPrioridadT" name="radioPrioridad" value="tiempo"> Tiempos de espera para consulta
             </label>
           </div>
           <div class="form-group">
-           <label class="checkbox-inline">
-              <input type="checkbox" id="checkboxDerechos" name="checkboxDerechos" value="optionDerechos"> Derechos de los usuarios
+           <label class="radio-inline">
+              <input type="radio" id="radioPrioridadD" name="radioPrioridad" value="derechos"> Derechos de los usuarios
             </label>
           </div>
           <div class="form-group">
-            <label class="checkbox-inline">
-              <input type="checkbox" id="checkboxCantidad" name="checkboxCantidad" value="optionCantidad"> Cantidad de personal disponible
+            <label class="radio-inline">
+              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="cantidad"> Cantidad de personal disponible
             </label>
           </div>
           <div class="form-group">
-            <label class="checkbox-inline">
-              <input type="checkbox" id="checkboxServicios" name="checkboxServicios" value="optionServicios"> Servicios para niños y embarazadas
+            <label class="radio-inline">
+              <input type="radio" id="radioPrioridadS" name="radioPrioridad" value="servicios"> Servicios para niños y embarazadas
             </label>
           </div>
 

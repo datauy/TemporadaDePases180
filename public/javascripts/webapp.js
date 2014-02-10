@@ -45,19 +45,13 @@ jQuery(function ($) {
             , fonasa =  $("input[name=opcionFonasa]:checked").val()
             , url, i;
 
-            /* ToDo. Cambiar los siguientes elementos por un radio button*/
-          var costo = $("#checkboxPrecio").is(":checked")
-            , tiempo  = $("#checkboxTiempos").is(":checked")
-            , derechos = $("#checkboxDerechos").is(":checked")
-            , cantidad = $("#checkboxCantidad").is(":checked")
-            , servicios = $("#checkboxServicios").is(":checked");
-            
+          var prioridad = $('input[name=radioPrioridad]:radio:checked').val();
 
           event.preventDefault();
 
           if (departamento !== "") {
             url = "/departamento/" + departamento;
-            url += "?ginecologia=" + ginecologia + "&pediatria=" + pediatria + "&fonasa=" + fonasa + "&prioridad=" + 'costo'
+            url += "?ginecologia=" + ginecologia + "&pediatria=" + pediatria + "&fonasa=" + fonasa + "&prioridad=" + prioridad
 
             //TODO: prioridad puede ser uno de estos: costo, tiempo, derechos, personal
 
@@ -93,6 +87,12 @@ jQuery(function ($) {
       /**
        *
        */
+       render: function() {
+        /*alert('render');*/
+       },
+       /**
+       *
+       */
       _displayInputError: function ($field, errorMessage) {
         var errorHTML = [
           "<div class=\"form-error\">",
@@ -116,9 +116,8 @@ jQuery(function ($) {
 
   App.initialize();
 
-  if ($("#departamento").val() !== "") {
-    App.render();
-  }
+
+  App.render();
 
   $(".help-tooltip").tooltip();
 
