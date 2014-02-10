@@ -43,18 +43,24 @@ jQuery(function ($) {
             , ginecologia = $("input[name=opcionGinecologia]:checked").val()
             , pediatria = $("input[name=opcionPediatria]:checked").val()
             , fonasa =  $("input[name=opcionFonasa]:checked").val()
-            , precio = $("#checkboxPrecio").is(":checked")
-            , tiemposEspera  = $("#checkboxTiempos").is(":checked")
+            , url, i;
+
+            /* ToDo. Cambiar los siguientes elementos por un radio button*/
+          var costo = $("#checkboxPrecio").is(":checked")
+            , tiempo  = $("#checkboxTiempos").is(":checked")
             , derechos = $("#checkboxDerechos").is(":checked")
             , cantidad = $("#checkboxCantidad").is(":checked")
-            , servicios = $("#checkboxServicios").is(":checked")
-            , url, i;
+            , servicios = $("#checkboxServicios").is(":checked");
+            
 
           event.preventDefault();
 
           if (departamento !== "") {
             url = "/departamento/" + departamento;
-            url += "?ginecologia=" + ginecologia + "&pediatria=" + pediatria + "&fonasa=" + fonasa + "&precio=" + precio + "&tiemposEspera=" + tiemposEspera + "&derechos=" + derechos + "&cantidad=" + cantidad + "&servicios=" + servicios
+            url += "?ginecologia=" + ginecologia + "&pediatria=" + pediatria + "&fonasa=" + fonasa + "&prioridad=" + 'costo'
+
+            //TODO: prioridad puede ser uno de estos: costo, tiempo, derechos, personal
+
             document.location.href = url;
           }
           else {

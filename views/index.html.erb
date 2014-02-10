@@ -93,13 +93,13 @@
 </div> <!-- formulario -->
 
 <section class="resultados" <% if prioridades.empty? %>style="display: none;" <% end %>>
-  <h3><% if (prioridades.length > 1) %> Ranking de prestadores de salud de <%= departamento %>, considerando consultas <%= prioridades[:consultas].join(', ') %><% if prioridades[:fonasa] %>  para afiliados por FONASA <% end %>, priorizando <%= prioridades[:prioridades].join(', ') %>: <% end %></h3>
-
+  <h3><% if (prioridades.length > 1) %> 
+    Ranking de prestadores de salud de <%= departamento %>, considerando consultas<% if prioridades[:ginecologia] %> ginecologicas<% end %><% if prioridades[:pediatria] %> y pediatría<% end %><% if prioridades[:fonasa] %> para afiliados por FONASA<% end %>, priorizando <%= prioridades[:prioridad] %>: <% end %></h3>
 
   <div id="carousel-resultados" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <% for i in 0..(rankings.length-1) do %>
+    <% for i in 0..(mutualistas.length-1) do %>
       <li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li>
     <% end %>
   </ol>
@@ -107,9 +107,9 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
 
-    <% for ranking in rankings do %>
-      <div class="item<% if ranking == rankings.first %> active<% end %>">
-        <%= partial :resultado, locals: { ranking: ranking } %>
+    <% for mutualista in mutualistas do %>
+      <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
+        <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
       </div> 
     <% end %>
   </div>

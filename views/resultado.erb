@@ -1,42 +1,34 @@
 <table class="table">
         <tr class="table-headers">
-          <td class="table-mutualista"><%= ranking[:rango] %> - <%= ranking[:nombre] %></td>
+          <td class="table-mutualista"><%= posicion %> - <%= mutualista["NOMBRE"] %></td>
           <td></td>
-          <td class="table-ranking-header">Ranking</td>
         </tr>
         <tr>
           <td class="table-prioridad">Costo:</td>
-          <td>dibujito</td>
-          <td class="table-ranking-line"><%= ranking[:costo][:ranking] %></td>
+          <td><%= mutualista["COSTO"].values().join(',') %></td>
         </tr>
         <tr>
           <td class="table-prioridad">Metas asistenciales:</td>
-          <td>dibujito</td>
-          <td class="table-ranking-line"><%= ranking[:metas][:ranking] %></td>
+          <td><%= mutualista["METAS"].values().join(',') %></td>
         </tr>
         <tr>
           <td class="table-prioridad">Tiempos de espera:</td>
-          <td>dibujito</td>
-          <td class="table-ranking-line"><%= ranking[:tiempos_espera][:ranking] %></td>
+          <td><%= mutualista["TIEMPOS_ESPERA"].values().join(',') %></td>
         </tr> 
         <tr>
           <td class="table-prioridad">Satisfacción de usuarios:</td>
-          <td>dibujito</td>
-          <td class="table-ranking-line"><%= ranking[:satisfaccion][:ranking] %></td>
+          <td><%= mutualista["SATISFACCION"].values().join(',') %></td>
         </tr> 
         <tr>
           <td class="table-prioridad">Personal disponible:</td>
-          <td>dibujito</td>
-          <td class="table-ranking-line"><%= ranking[:personal][:ranking] %></td>
+          <td><%= mutualista["PERSONAL"].values().join(',') %></td>
         </tr> 
         <tr>
           <td class="table-prioridad">Asignación de citas:</td>
-          <td>dibujito</td>
-          <td class="table-ranking-line"></td>
+          <td><%= [mutualista["CITAS_PERSONAL"], mutualista["CITAS_TELEFONICA"], mutualista["CITAS_WEB"]].join(',') %></td>
         </tr> 
         <tr>
           <td class="table-prioridad">Recordatorio de consultas:</td>
-          <td>dibujito</td>
-          <td class="table-ranking-line"></td>
+          <td><%= [mutualista["RECORDATORIO_TELEFONO"], mutualista["RECORDATORIO_SMS"], mutualista["RECORDATORIO_CORREO"]].join(',') %></td>
         </tr>                
       </table>

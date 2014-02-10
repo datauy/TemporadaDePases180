@@ -38,13 +38,13 @@ class App < Sinatra::Base
       cache_control :public, :must_revalidate, max_age: 60 * 60 * 24
 
       departamento = 'montevideo' unless departamento
-      # calcular ranking a partir de parametros
-      prioridades = get_prioridades(params)
-      rankings = get_rankings(prioridades)
 
+      prioridades = get_prioridades(params)
+      mutualistas = get_rankings(departamento, prioridades)
+    
       erb(:'index.html', layout: :'layout.html', locals: {
         departamento: departamento,
-        rankings: rankings,
+        mutualistas: mutualistas,
         prioridades: prioridades
       })
     else
