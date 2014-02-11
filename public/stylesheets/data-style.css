@@ -428,7 +428,6 @@ margin-left: 15%;
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
 border-top:none !important;
 line-height: 0.2;
-text-align:right;
 }
 
 .table-headers
@@ -443,5 +442,22 @@ height: 40px;
 top:20% !important;
 }
 
+.table-results-left{
+  text-align:right;
+  width:22%;
+}
 
+.table-result-label{
+ font-weight: inherit;
+    margin-top: 1.4%;
+}
+
+
+.header-left{
+  width:34%;
+}
+
+.header-right{
+  width:76%;
+}
 

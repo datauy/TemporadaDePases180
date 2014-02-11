@@ -1,24 +1,25 @@
 <table class="table tableStyle">
         <tr class="table-headers">
-          <td class="table-mutualista"><%= posicion %> - <%= mutualista["NOMBRE"] %></td>
-          <td></td>
+          <td class="table-mutualista header-left"><%= posicion %> - <%= mutualista["NOMBRE"] %></td>
+          <td class="header-right"></td>
         </tr>
         <tr>
-          <td class="table-prioridad">Costo:</td>
+          <td class="table-prioridad table-results-left"><label class="table-result-label">Costo:</label></td>
           <td>
             <table class="table">
               <tr>
                 <% mutualista["COSTO"].values().each do |valor| %>
                   <td><%= valor %></td>
                 <% end %>
-                <td></td>
+                <td ></td>
+                
               </tr>
             </table>
 
           </td>
         </tr>
         <tr>
-          <td class="table-prioridad">Metas asistenciales:</td>
+          <td class="table-prioridad table-results-left"><label class="table-result-label">Metas asistenciales:</label></td>
           <td>
             <table class="table">
             <tr>
@@ -31,7 +32,7 @@
           </td>
         </tr>
         <tr>
-          <td class="table-prioridad">Tiempos de espera:</td>
+          <td class="table-prioridad table-results-left"><label class="table-result-label">Tiempos de espera:</label></td>
           <td>
             <table class="table">
             <tr>
@@ -44,7 +45,7 @@
           </td>
         </tr> 
         <tr>
-          <td class="table-prioridad">Satisfacción de usuarios:</td>
+          <td class="table-prioridad table-results-left"><label class="table-result-label">Satisfacción de usuarios:</label></td>
           <td>
             <table class="table">
             <tr>
@@ -57,7 +58,7 @@
           </td>
         </tr> 
         <tr>
-          <td class="table-prioridad">Personal disponible:</td>
+          <td class="table-prioridad  table-results-left"><label class="table-result-label"> Personal disponible:</label></td>
           <td>
             <table class="table">
             <tr>
@@ -70,7 +71,7 @@
           </td>
         </tr> 
         <tr>
-          <td class="table-prioridad">Asignación de citas:</td>
+          <td class="table-prioridad table-results-left"><label class="table-result-label"> Asignación de citas:</label></td>
           <td>
             <% if mutualista["CITAS_PERSONAL"] %><img src="<%= asset_path('images/personalmente.png') %>"><% end %>
             <% if mutualista["CITAS_TELEFONICA"] %><img src="<%= asset_path('images/telefono.png') %>"><% end %>
@@ -78,7 +79,7 @@
          </td>
         </tr> 
         <tr>
-          <td class="table-prioridad">Recordatorio de consultas:</td>
+          <td class="table-prioridad table-results-left"><label class="table-result-label"> Recordatorio de consultas:</label></td>
           <td>
             <% if mutualista["RECORDATORIO_TELEFONO"] %><img src="<%= asset_path('images/telefono.png') %>"><% end %>
             <% if mutualista["RECORDATORIO_SMS"] %><img src="<%= asset_path('images/sms.png') %>"><% end %>
