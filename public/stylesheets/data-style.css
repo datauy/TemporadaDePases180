@@ -318,4 +318,48 @@ footer .external-links a {
 
 .with-name #sharing {
   display: block;
+  
+}
+
+/* Me quiero Cambiar section ******************************/
+#mequierocambiar:before {
+  clear: both;
+}
+
+#mequierocambiar:after {
+  content: '';
+  display: block;
+  clear:both;
+}
+
+#mequierocambiar .left {
+  float: left;
+  width: 50%;
+}
+
+#mequierocambiar .right {
+  float: right;
+  width: 48%;
+}
+
+#mequierocambiar h1 {
+  color: #d63d34;
+}
+
+#mequierocambiar .left p {
+  color: grey;
+  font-size: 1.2em;
+}
+
+#mequierocambiar .right {
+  margin-top: 20px;
+}
+
+#mequierocambiar .right p:first-child {
+  padding-bottom: 8px;
+  border-bottom: 1px #d63d34 solid;
+}
+
+#mequierocambiar a.button {
+  background-color: #d63d34;
 }
