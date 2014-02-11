@@ -48,6 +48,7 @@ h2, .h2 {
     margin-top: 0;
 }
 
+
 /*h3 {
     color: #d63d34;
 }*/
@@ -80,7 +81,7 @@ h2, .h2 {
 
 .alternate-body {
     background-color: #f7f7f7;
-    border: solid #e7e7e7;
+  /*  border: solid #e7e7e7;*/
     border-width: 1px 0;
     padding: 10px 5px;
 }
@@ -318,8 +319,10 @@ footer .external-links a {
 
 .with-name #sharing {
   display: block;
+<<<<<<< HEAD
   
 }
+*/
 
 /* Resultados section *************************************/
 #aclaraciones {
@@ -381,3 +384,67 @@ footer .external-links a {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+
+/*modifications neo*/
+
+.resultados h3{
+ bottom: 14%;
+
+    margin-bottom: 4%;
+    margin-left: 13%;
+    text-align: center;
+    width: 78%;
+    margin-top:4%;
+}
+
+
+.table-headers td{
+  text-align:left!important;
+}
+
+
+.table{
+  margin-bottom: 0!important;
+}
+
+.tableStyle {
+ border-collapse: separate;
+    border-color: #EFDEDE;
+    border-radius: 6px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 0.5px; 
+    }
+
+.carousel-control.left{
+  background-image: none !important;
+}
+.carousel-control.right{
+  background-image: none !important;
+}
+
+.carousel-inner{
+width:70%;
+margin-left: 15%;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+border-top:none !important;
+line-height: 0.2;
+text-align:right;
+}
+
+.table-headers
+{
+background-color: #EFDEDE;
+color: #AE4B47;
+font-weight:500;
+height: 40px;
+}
+
+.carousel-control{
+top:20% !important;
+}
+
+
+
