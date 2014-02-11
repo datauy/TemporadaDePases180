@@ -18,7 +18,7 @@
             </label>
             <label>
               No <input type="radio" name="opcionGinecologia" id="ginecologiaRadioNo" value="false" <% if !ginecologia %>checked<% end %>>
-            </label>                  
+            </label>
           </div>
           <div class="">
             Consultas de Pediatría:
@@ -27,7 +27,7 @@
             </label>
             <label>
               No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false" <% if !pediatria %>checked<% end %>>
-            </label> 
+            </label>
             <!--<span class="help-tooltip help-icon" title="Vas a tener a niños afiliados a la mutualista?"></span>-->
           </div>
           <div class="">
@@ -51,7 +51,7 @@
           </div>
         </div> <!-- primera columna -->
         <div class="col-md-6 text-left" style="border-left: 1px solid #d63d34;"> <!-- tercera columna -->
-          <div class="">           
+          <div class="">
             <label>
               <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="costo"> Precio de los tickets
             </label>
@@ -100,7 +100,7 @@
     <% for mutualista in mutualistas do %>
       <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
         <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
-      </div> 
+      </div>
     <% end %>
   </div>
 
