@@ -115,10 +115,19 @@ module Helpers
                 mutualistas_completas   = []
                 mutualistas_incompletas = []
 
+                
                 # calcular el ranking de solo las mutualistas con datos completos
                 for mutu in todas_las_mutualistas do
+                    # actualizo los cambos que deberian ser booleanos a booleanos
+                    
+                    for cita in ["CITAS_PERSONAL", "CITAS_TELEFONICA", "CITAS_WEB", "RECORDATORIO_TELEFONO", 
+                        "RECORDATORIO_SMS", "RECORDATORIO_CORREO"] do
+                        mutu[cita] = to_boolean(mutu[cita])
+                    end
+
                     if to_boolean(mutu["INCOMPLETA"])
                         mutu["RANKING"] = 0
+
                         mutualistas_incompletas << mutu
                     else
                         mutu["RANKING"] = calcular_ranking(mutu, variables_a_usar)
