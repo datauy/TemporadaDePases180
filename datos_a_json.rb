@@ -34,7 +34,6 @@ module DatosMutualistas
             mutualistas_csv = CSV.read(DATA_FILE, 'r', :headers => true)
 
             for departamento in DEPARTAMENTOS do
-                puts departamento
                 mutualistas = []
 
                 mutualistas_csv.each do |mutu|
@@ -81,6 +80,7 @@ module DatosMutualistas
                             :LICENFER     => mejor_mutu[:PERSONAL_CANT_LICENF]
                         }
 
+
                         mutualistas << mejor_mutu
                     end
                 end
@@ -113,16 +113,16 @@ module DatosMutualistas
         def self.sin_datos(*variables)
             for var in variables
                 if var == 's/d'
-                    return false
+                    return true
                 end
             end
-            return true
+            return false
         end
 
         # todos los costos se calculan como promedios de esos campos
         def self.calcular_medicamento(mutualista)
 
-            if sin_datos(mutualista[:MEDICAMENTOS_GENERAL],mutualista[:MEDICAMENTOS_GENERAL_FONASA].to_i, 
+            if sin_datos(mutualista[:MEDICAMENTOS_GENERAL],mutualista[:MEDICAMENTOS_GENERAL_FONASA], 
                 mutualista[:MEDICAMENTOS_TOPEADOS],mutualista[:MEDICAMENTOS_TOPEADOS_FONASA])
                 costos_medicamentos = 's/d'
             else
