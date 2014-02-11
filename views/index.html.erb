@@ -12,13 +12,13 @@
       <div class="row">
         <div class="col-md-6 text-right"> <!-- primera columna -->
           <div class="">
-            Consultas de Ginecologia:
+            Consultas de Ginecologia: 
             <label>
               Si <input type="radio" name="opcionGinecologia" id="ginecologiaRadioSi" value="true" <% if ginecologia %>checked<% end %>>
             </label>
             <label>
               No <input type="radio" name="opcionGinecologia" id="ginecologiaRadioNo" value="false" <% if !ginecologia %>checked<% end %>>
-            </label>
+            </label>                  
           </div>
           <div class="">
             Consultas de Pediatría:
@@ -27,7 +27,7 @@
             </label>
             <label>
               No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false" <% if !pediatria %>checked<% end %>>
-            </label>
+            </label> 
             <!--<span class="help-tooltip help-icon" title="Vas a tener a niños afiliados a la mutualista?"></span>-->
           </div>
           <div class="">
@@ -51,7 +51,7 @@
           </div>
         </div> <!-- primera columna -->
         <div class="col-md-6 text-left" style="border-left: 1px solid #d63d34;"> <!-- tercera columna -->
-          <div class="">
+          <div class="">           
             <label>
               <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="costo"> Precio de los tickets
             </label>
@@ -81,8 +81,8 @@
 
 <section class="resultados" <% if prioridades.empty? %>style="display: none;" <% end %>>
   <h3>
-    <% if (prioridades.length > 1) %>
-    Ranking de prestadores de salud de <%= departamento %>, considerando consultas<% if ginecologia %> ginecologicas<% end %><% if pediatria %> y pediatría<% end %><% if fonasa %> para afiliados por FONASA<% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridades[:prioridad]] %>:
+    <% if (prioridades.length > 1) %> 
+    Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridades[:prioridad]] %>: 
     <% end %>
   </h3>
 
@@ -100,7 +100,7 @@
     <% for mutualista in mutualistas do %>
       <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
         <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
-      </div>
+      </div> 
     <% end %>
   </div>
 

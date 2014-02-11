@@ -81,17 +81,16 @@ h2, .h2 {
 
 .alternate-body {
     background-color: #f7f7f7;
-  /*  border: solid #e7e7e7;*/
+    border: solid #e7e7e7;
     border-width: 1px 0;
     padding: 10px 5px;
-    margin: 0 13%;
 }
 
-/* @media (min-width: 768px) { */
-/*     .alternate-body { */
-/*         padding: 20px; */
-/*     } */
-/* } */
+ @media (min-width: 768px) { 
+     .alternate-body { 
+         padding: 20px; 
+     } 
+ } 
 
 .Aligner {
     display: -webkit-box;
