@@ -128,9 +128,9 @@ module Helpers
 
                 # ordenar el ranking de acuerdo a valor de ranking hallado (precio o tiempo en subida y derechos o personal en bajada)
                 if prioridades[:prioridad] == "tiempo" || prioridades[:prioridad] == "costo" 
-                    mutualistas_completas.sort_by { |m| m["RANKING"] }
+                    mutualistas_completas = mutualistas_completas.sort_by { |m| m["RANKING"] }
                 else # personal o derechos
-                    mutualistas_completas.sort_by { |m| m["RANKING"] }.reverse
+                    mutualistas_completas = mutualistas_completas.sort_by { |m| m["RANKING"] }.reverse
                 end
                 
                 mutualistas = mutualistas_completas + mutualistas_incompletas
