@@ -326,12 +326,13 @@ footer .external-links a {
 
 /* Resultados section *************************************/
 #aclaraciones {
-  margin: 40px 0;
   font-size: 0.9em;
+  margin: 40px 13%;
 }
 
 #aclaraciones p {
-  line-height: 6px;
+  padding-left: 15px;
+  margin: 0 0 7px;
 }
 
 /* Me quiero Cambiar section ******************************/
@@ -347,21 +348,15 @@ footer .external-links a {
   margin-bottom: 30px;
 }
 
-#mequierocambiar .left {
-  float: left;
-  width: 50%;
-}
-
-#mequierocambiar .right {
-  float: right;
-  width: 48%;
+#mequierocambiar {
+  margin-left: 13%;
 }
 
 #mequierocambiar h1 {
   color: #d63d34;
 }
 
-#mequierocambiar .left p {
+#mequierocambiar p:second-child {
   color: grey;
   font-size: 1.2em;
 }
