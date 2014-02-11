@@ -47,6 +47,11 @@ jQuery(function ($) {
 
           var prioridad = $('input[name=radioPrioridad]:radio:checked').val();
 
+          // set default en costo
+          if (typeof prioridad === "undefined") {
+            prioridad = 'costo'; 
+          }
+
           event.preventDefault();
 
           if (departamento !== "") {
