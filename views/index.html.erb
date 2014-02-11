@@ -76,7 +76,7 @@
 <section class="resultados" <% if prioridades.empty? %>style="display: none;" <% end %>>
   <h3>
     <% if (prioridades.length > 1) %> 
-    Ranking de prestadores de salud de <%= departamento %>, considerando consultas<% if prioridades[:ginecologia] %> ginecologicas<% end %><% if prioridades[:pediatria] %> y pediatría<% end %><% if prioridades[:fonasa] %> para afiliados por FONASA<% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridades[:prioridad]] %>: 
+      Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if prioridades[:ginecologia] %> ginecologicas<% end %></span><% if prioridades[:pediatria] %> y <span class="highlight">pediatría</span><% end %><% if prioridades[:fonasa] %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridades[:prioridad]] %>: 
     <% end %>
   </h3>
 
@@ -107,17 +107,19 @@
   </a>
 </div>
 
-  <p class="pie-de-tabla pull-left">Datos extraidos de la planilla de indicadores publicada por el Ministerio de Salud Publica.</p>
-  <p class="pie-de-tabla pull-left">Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
+  <section id="aclaraciones">
+  <p>Datos extraidos de la planilla de indicadores publicada por el <a href="http://msp.gub.uy">Ministerio de Salud Pública</a></p>
+    <p>Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
+  </section>
 </section>
 
 <% if !prioridades.empty? %>
-  <section id="mequierocambiar" class="alternate-body">
-    <section class="left">
+  <section id="mequierocambiar">
+    <section class="col-md-6">
       <h1>¡Me quiero cambiar!</h1>
       <p>Para ésto es necesario presentarse en el prestador de salud elegido, personalmente.</p>
     </section>
-    <section class="right">
+    <section class="col-md-6 right">
       <p>Recordá que sólo pueden cambiarse quienes tengan un <strong>mínimo de tres años en su prestador de salud actual</strong> y que <strong>sólo pueden hacerlos hasta el 28 de febrero.</strong>
       </p>
       <p><strong>¿Más dudas?</strong> Consultá en el sitio: <a class="button" href="http://www.msp.gub.uy">www.msp.gub.uy</a>
