@@ -8,39 +8,38 @@
 <div class="alternate-body">
   <div class="container formulario">
     <h3 class="Mt-0 highlight text-center">Contestá estas preguntas y elegí una prioridad:</h3>
-    <hr class="invisible">
     <form id="preguntas-form" action="/departamento" method="POST" autocomplete="off" class="form-horizontal">
-      <div class="row">
-        <div class="col-md-6 text-right"> <!-- primera columna -->
-          <div class="">
+      <div class="row divided Aligner">
+        <div class="col-xs-6 text-right"> <!-- primera columna -->
+          <div class="form-control">
             Consultas de Ginecologia:
-            <label>
+            <label class="Fw-n">
               Si <input type="radio" name="opcionGinecologia" id="ginecologiaRadioSi" value="true" <% if ginecologia %>checked<% end %>>
             </label>
-            <label>
+            <label class="Fw-n">
               No <input type="radio" name="opcionGinecologia" id="ginecologiaRadioNo" value="false" <% if !ginecologia %>checked<% end %>>
             </label>
           </div>
-          <div class="">
+          <div class="form-control">
             Consultas de Pediatría:
-            <label>
+            <label class="Fw-n">
               Si <input type="radio" name="opcionPediatria" id="pediatriaRadioSi" value="true" <% if pediatria %>checked<% end %>>
             </label>
-            <label>
+            <label class="Fw-n">
               No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false" <% if !pediatria %>checked<% end %>>
             </label>
             <!--<span class="help-tooltip help-icon" title="Vas a tener a niños afiliados a la mutualista?"></span>-->
           </div>
-          <div class="">
+          <div class="form-control">
             Afiliado de FONASA:
-            <label>
+            <label class="Fw-n">
               Si <input type="radio" name="opcionFonasa" id="fonasaRadioSi" value="true" <% if fonasa %>checked<% end %>>
             </label>
-            <label>
+            <label class="Fw-n">
               No <input type="radio" name="opcionFonasa" id="fonasaRadioNo" value="false" <% if !fonasa %>checked<% end %>>
             </label>
           </div>
-          <div class="">
+          <div class="form-control">
             Departamento:
             <select id="departamento" name="departamento" placeholder=".col-xs-4">
               <% ["artigas", "canelones", "cerro_largo", "colonia", "durazno", "flores", "florida", "lavalleja", "maldonado", "montevideo", "paysandu", "rio_negro", "rivera", "rocha", "salto", "san_jose", "soriano", "tacuarembo", "treinta_y_tres"].sort.each do |sel_departamento| %>
@@ -51,41 +50,38 @@
             </select>
           </div>
         </div> <!-- primera columna -->
-        <div class="col-md-6 text-left" style="border-left: 1px solid #d63d34;"> <!-- tercera columna -->
-          <div class="">
-            <label>
+        <div class="col-xs-6 text-left">
+          <div class="form-control">
+            <label class="Fw-n">
               <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="costo" <% if prioridad == 'costo' %>checked<% end %>> Precio de los tickets
             </label>
           </div>
-          <div class="">
-            <label>
+          <div class="form-control">
+            <label class="Fw-n">
               <input type="radio" id="radioPrioridadT" name="radioPrioridad" value="tiempo" <% if prioridad == 'tiempo' %>checked<% end %>> Tiempos de espera para consulta
             </label>
           </div>
-          <div class="">
-           <label>
+          <div class="form-control">
+           <label class="Fw-n">
               <input type="radio" id="radioPrioridadD" name="radioPrioridad" value="derechos" <% if prioridad == 'derechos' %>checked<% end %>> Derechos de los usuarios
             </label>
           </div>
-          <div class="">
-            <label>
+          <div class="form-control">
+            <label class="Fw-n">
               <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="personal" <% if prioridad == 'personal' %>checked<% end %>> Cantidad de personal disponible
             </label>
           </div>
         </div> <!-- tercera columna -->
       </div> <!-- row -->
-      <hr class="invisible">
       <button type="submit" class="btn btn-lg btn-danger center-block" style="padding: 10px 75px;">¡Buscar!</button>
     </form>
   </div>
 </div> <!-- formulario -->
 
-<section class="resultados" <% if prioridades.empty? %>style="display: none;" <% end %>>
-  <h3>
-    <% if (prioridades.length > 1) %> 
-    Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %>: 
+<section class="resultados container" <% if prioridades.empty? %>style="display: none;" <% end %>>
+    <% if (prioridades.length > 1) %>
+        <p class="h3 text-center jumbotron jumbotron-inverse">Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
     <% end %>
-  </h3>
 
   <div id="carousel-resultados" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->

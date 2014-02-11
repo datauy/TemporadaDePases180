@@ -73,9 +73,28 @@ h2, .h2 {
 
 /* Extends ****************************************************************/
 
+.form-control {
+    background: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 .jumbotron-inverse {
     background-color: white;
 }
+
+ @media (max-width: 768px) { 
+     .jumbotron {
+        padding: 0;
+     } 
+ }
+
+ @media (min-width: 768px) { 
+     .alternate-body { 
+         padding: 20px; 
+     } 
+ }
 
 /* Components ****************************************************************/
 
@@ -90,7 +109,7 @@ h2, .h2 {
      .alternate-body { 
          padding: 20px; 
      } 
- } 
+ }
 
 .Aligner {
     display: -webkit-box;
@@ -134,6 +153,15 @@ h2, .h2 {
     -webkit-align-self: flex-end;
     -ms-flex-item-align: end;
     align-self: flex-end;
+}
+
+.divided > .col-xs-6 {
+    border-left: 1px solid #d63d34;
+    margin: 20px 0;
+}
+
+.divided > .col-xs-6:first-child {
+    border-left: none;
 }
 
 /* Custom *********************************************************/
@@ -286,6 +314,7 @@ h2, .h2 {
 }*/
 
 /* Footer **********************************************************/
+/*
 footer {
   text-align: center;
   font-size: 14px;
@@ -306,7 +335,7 @@ footer .external-links a {
   padding-top: 50px;
   padding-bottom: 20px;
 }
-
+*/
 /* Sharing ****************************************************************/
 /*#sharing {
   text-align: center;
@@ -326,6 +355,7 @@ footer .external-links a {
 */
 
 /* Resultados section *************************************/
+/*
 #aclaraciones {
   font-size: 0.9em;
   margin: 40px 13%;
@@ -335,8 +365,9 @@ footer .external-links a {
   padding-left: 15px;
   margin: 0 0 7px;
 }
-
+*/
 /* Me quiero Cambiar section ******************************/
+/*
 #mequierocambiar:before {
   clear: both;
   margin-top: 30px;
@@ -380,9 +411,10 @@ footer .external-links a {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+*/
 
 /*modifications neo*/
-
+/*
 .resultados h3{
  bottom: 14%;
 
@@ -459,4 +491,4 @@ top:20% !important;
 .header-right{
   width:76%;
 }
-
+*/
