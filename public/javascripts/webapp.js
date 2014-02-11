@@ -119,6 +119,6 @@ jQuery(function ($) {
 
   App.render();
 
-  $(".help-tooltip").tooltip();
+  //$(".help-tooltip").tooltip();
 
 });
