@@ -31,7 +31,7 @@ module Helpers
                 'ESTUDIO_TOMOGRAFIA_FONASA', 'ESTUDIO_LABORATORIO', 'ESTUDIO_LABORATORIO_FONASA', 'TIEMPO_ESP_MED_GEN', 'TIEMPO_ESP_PEDIATRIA',
                 'TIEMPO_ESP _CIRUG', 'TIEMPO_ESP_GIN', 'ENT_QUEJAS', 'ENT_DERECHOS', 'PERSONAL_CANT_MED', 'PERSONAL_CANT_GIN', 
                 'PERSONAL_CANT_PED', 'PERSONAL_CANT_ENF', ' PERSONAL_CANT_LICENF', 'CITAS_PERSONAL', 'CITAS_TELEFONICA', 'CITAS_WEB', 
-                'RECORDATORIO_TELEFONO', 'RECORDATORIO_SMS', 'RECORDATORIO_CORREO']
+                'RECORDATORIO_TELEFONO', 'RECORDATORIO_SMS', 'RECORDATORIO_CORREO', 'INCOMPLETA']
 
             variables_a_ignorar = []
             
@@ -117,22 +117,22 @@ module Helpers
 
                 # calcular el ranking de solo las mutualistas con datos completos
                 for mutu in todas_las_mutualistas do
-                    if to_boolean(mutu['INCOMPLETA'])
-                        mutu[:ranking] = 0
+                    if to_boolean(mutu["INCOMPLETA"])
+                        mutu["RANKING"] = 0
                         mutualistas_incompletas << mutu
                     else
-                        mutu[:ranking] = calcular_ranking(mutu, variables_a_usar)
+                        mutu["RANKING"] = calcular_ranking(mutu, variables_a_usar)
                         mutualistas_completas << mutu
                     end
                 end
 
                 # ordenar el ranking de acuerdo a valor de ranking hallado (precio o tiempo en subida y derechos o personal en bajada)
                 if prioridades[:prioridad] == "tiempo" || prioridades[:prioridad] == "costo" 
-                    mutualistas_completas.sort_by { |m| m[:ranking] }
+                    mutualistas_completas.sort_by { |m| m["RANKING"] }
                 else # personal o derechos
-                    mutualistas_completas.sort_by { |m| m[:ranking] }.reverse
+                    mutualistas_completas.sort_by { |m| m["RANKING"] }.reverse
                 end
-
+                
                 mutualistas = mutualistas_completas + mutualistas_incompletas
 
                 return mutualistas
@@ -143,10 +143,10 @@ module Helpers
 
         # don't like this to be monkey patch
         def to_boolean(palabra)
-            case palabra
-            when 'false' || 'FALSE'
+            case palabra.downcase
+            when 'false'
                 return false
-            when 'true' || 'TRUE'
+            when 'true'
                 return true
             else
                 return nil
