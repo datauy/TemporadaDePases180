@@ -362,4 +362,10 @@ footer .external-links a {
 
 #mequierocambiar a.button {
   background-color: #d63d34;
+  color: white;
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: 2px 18px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
