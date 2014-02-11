@@ -1,3 +1,9 @@
+<%
+    ginecologia = prioridades.length == 0 || prioridades[:ginecologia]
+    pediatria = prioridades.length == 0 || prioridades[:pediatria]
+    fonasa = prioridades.length == 0 || prioridades[:fonasa]
+%>
+
 <div class="alternate-body">
   <div class="container formulario">
     <h3 class="Mt-0 highlight text-center">Contestá estas preguntas y elegí una prioridad:</h3>
@@ -8,29 +14,29 @@
           <div class="">
             Consultas de Ginecologia: 
             <label>
-              Si <input type="radio" name="opcionGinecologia" id="ginecologiaRadioSi" value="true" checked>
+              Si <input type="radio" name="opcionGinecologia" id="ginecologiaRadioSi" value="true" <% if ginecologia %>checked<% end %>>
             </label>
             <label>
-              No <input type="radio" name="opcionGinecologia" id="ginecologiaRadioNo" value="false">
+              No <input type="radio" name="opcionGinecologia" id="ginecologiaRadioNo" value="false" <% if !ginecologia %>checked<% end %>>
             </label>                  
           </div>
           <div class="">
             Consultas de Pediatría:
             <label>
-              Si <input type="radio" name="opcionPediatria" id="pediatriaRadioSi" value="true" checked>
+              Si <input type="radio" name="opcionPediatria" id="pediatriaRadioSi" value="true" <% if pediatria %>checked<% end %>>
             </label>
             <label>
-              No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false">
+              No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false" <% if !pediatria %>checked<% end %>>
             </label> 
             <!--<span class="help-tooltip help-icon" title="Vas a tener a niños afiliados a la mutualista?"></span>-->
           </div>
           <div class="">
             Afiliado de FONASA:
             <label>
-              Si <input type="radio" name="opcionFonasa" id="fonasaRadioSi" value="true" checked>
+              Si <input type="radio" name="opcionFonasa" id="fonasaRadioSi" value="true" <% if fonasa %>checked<% end %>>
             </label>
             <label>
-              No <input type="radio" name="opcionFonasa" id="fonasaRadioNo" value="false">
+              No <input type="radio" name="opcionFonasa" id="fonasaRadioNo" value="false" <% if !fonasa %>checked<% end %>>
             </label>
           </div>
           <div class="">
