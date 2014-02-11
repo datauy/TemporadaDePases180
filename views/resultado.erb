@@ -6,68 +6,58 @@
         <tr>
           <td class="table-prioridad table-results-left"><label class="table-result-label">Costo:</label></td>
           <td>
-            <table class="table">
-              <tr>
-                <% mutualista["COSTO"].values().each do |valor| %>
-                  <td><%= valor %></td>
-                <% end %>
-                <td ></td>
-                
-              </tr>
-            </table>
+
+            <div class="barra">
+              <% placements = ['left', 'top', 'bottom', 'right'] %>
+              <% mutualista["COSTO"].keys().each do |key| %>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="<%= placements.shift %>" title="<%= key %>"><%= mutualista["COSTO"][key] %></button>
+              <% end %>
+            </div>
 
           </td>
         </tr>
         <tr>
           <td class="table-prioridad table-results-left"><label class="table-result-label">Metas asistenciales:</label></td>
           <td>
-            <table class="table">
-            <tr>
-              <% mutualista["METAS"].values().each do |valor| %>
-                <td><%= valor %></td>
+            <% placements = ['left', 'top', 'bottom', 'right'] %>
+            <div class="barra">
+              <% mutualista["METAS"].keys().each do |key| %>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="<%= placements.shift %>" title="<%= key %>"><%= mutualista["METAS"][key] %></button>
               <% end %>
-              <td></td>
-            </tr>
-            </table>
+            </div>
           </td>
         </tr>
         <tr>
           <td class="table-prioridad table-results-left"><label class="table-result-label">Tiempos de espera:</label></td>
           <td>
-            <table class="table">
-            <tr>
-              <% mutualista["TIEMPOS_ESPERA"].values().each do |valor| %>
-                <td><%= valor %></td>
+            <% placements = ['left', 'top', 'bottom', 'right'] %>
+            <div class="barra">
+              <% mutualista["TIEMPOS_ESPERA"].keys().each do |key| %>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="<%= placements.shift %>" title="<%= key %>"><%= mutualista["TIEMPOS_ESPERA"][key] %></button>
               <% end %>
-              <td></td>
-            </tr>
-            </table>
+            </div>
           </td>
         </tr> 
         <tr>
           <td class="table-prioridad table-results-left"><label class="table-result-label">Satisfacción de usuarios:</label></td>
           <td>
-            <table class="table">
-            <tr>
-              <% mutualista["SATISFACCION"].values().each do |valor| %>
-                <td><%= valor %></td>
+            <% placements = ['left', 'top', 'bottom', 'right'] %>
+            <div class="barra">
+              <% mutualista["SATISFACCION"].keys().each do |key| %>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="<%= placements.shift %>" title="<%= key %>"><%= mutualista["SATISFACCION"][key] %></button>
               <% end %>
-              <td></td>
-            </tr>
-            </table>
+            </div>
           </td>
         </tr> 
         <tr>
           <td class="table-prioridad  table-results-left"><label class="table-result-label"> Personal disponible:</label></td>
           <td>
-            <table class="table">
-            <tr>
-              <% mutualista["PERSONAL"].values().each do |valor| %>
-                <td><%= valor %></td>
+            <% placements = ['left', 'top', 'bottom', 'right'] %>
+            <div class="barra">
+              <% mutualista["PERSONAL"].keys().each do |key| %>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="<%= placements.shift %>" title="<%= key %>"><%= mutualista["PERSONAL"][key] %></button>
               <% end %>
-              <td></td>
-            </tr>
-            </table>
+            </div>
           </td>
         </tr> 
         <tr>
