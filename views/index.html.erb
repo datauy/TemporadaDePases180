@@ -1,10 +1,9 @@
 <%
-    ginecologia = prioridades.length == 0 || prioridades[:ginecologia]
-    pediatria = prioridades.length == 0 || prioridades[:pediatria]
-    fonasa = prioridades.length == 0 || prioridades[:fonasa]
+    ginecologia = prioridades.empty? || prioridades[:ginecologia]
+    pediatria = prioridades.empty? || prioridades[:pediatria]
+    fonasa = prioridades.empty? || prioridades[:fonasa]
     prioridad = prioridades[:prioridad]
 %>
-
 <div class="alternate-body">
   <div class="container formulario">
     <h3 class="Mt-0 highlight text-center">Contestá estas preguntas y elegí una prioridad:</h3>
@@ -55,7 +54,7 @@
         <div class="col-xs-6 text-left">
           <div class="form-control">
             <label class="Fw-n">
-              <input type="radio" id="radioPrioridadC" class="" name="radioPrioridad" value="costo" <% if prioridad == 'costo' %>checked<% end %>> Precio de los tickets
+              <input type="radio" id="radioPrioridadC" class="" name="radioPrioridad" value="costo" <% if !prioridad || prioridad == 'costo' %>checked<% end %>> Precio de los tickets
             </label>
           </div>
           <div class="form-control">
@@ -80,55 +79,54 @@
   </div>
 </div> <!-- formulario -->
 
-<section class="resultados container" <% if prioridades.empty? %>style="display: none;" <% end %>>
-    <% if (prioridades.length > 1) %>
-        <p class="h3 text-center jumbotron jumbotron-inverse">Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
-    <% end %>
-
-  <div id="carousel-resultados" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <% for i in 0..(mutualistas.length-1) do %>
-      <li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li>
-    <% end %>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-
-    <% for mutualista in mutualistas do %>
-      <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
-        <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
-      </div>
-    <% end %>
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
-    <img src="<%= asset_path('images/izquierda.png') %>">
-  </a>
-  <a class="right carousel-control" href="#carousel-resultados" data-slide="next">
-    <img src="<%= asset_path('images/derecha.png') %>">
-  </a>
-</div>
-
-  <section id="aclaraciones">
-  <p>Datos extraidos de la planilla de indicadores publicada por el <a href="http://msp.gub.uy">Ministerio de Salud Pública</a></p>
-    <p>Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
-  </section>
-</section>
-
 <% if !prioridades.empty? %>
-  <section id="mequierocambiar">
-    <section class="col-md-6">
-      <h1>¡Me quiero cambiar!</h1>
-      <p>Para ésto es necesario presentarse en el prestador de salud elegido, personalmente.</p>
-    </section>
-    <section class="col-md-6 right">
-      <p>Recordá que sólo pueden cambiarse quienes tengan un <strong>mínimo de tres años en su prestador de salud actual</strong> y que <strong>sólo pueden hacerlos hasta el 28 de febrero.</strong>
-      </p>
-      <p><strong>¿Más dudas?</strong> Consultá en el sitio: <a class="button" href="http://www.msp.gub.uy">www.msp.gub.uy</a>
-      </p>
-    </section>
+  <section class="resultados">
+    <% if (prioridades.length > 1) %>
+      <p class="h3 text-center jumbotron jumbotron-inverse">Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
+    <% end %>
+
+    <div id="carousel-resultados" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% for i in 0..(mutualistas.length-1) do %>
+          <li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li>
+        <% end %>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="container">
+        <div class="carousel-inner">
+          <% for mutualista in mutualistas do %>
+            <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
+              <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
+            </div>
+          <% end %>
+        </div>
+        
+        <p>Datos extraidos de la planilla de indicadores publicada por el <a href="http://msp.gub.uy">Ministerio de Salud Pública</a></p>
+        <p>Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
+        <img src="<%= asset_path('images/izquierda.png') %>">
+      </a>
+      <a class="right carousel-control" href="#carousel-resultados" data-slide="next">
+        <img src="<%= asset_path('images/derecha.png') %>">
+      </a>
+    </div>
   </section>
+
+  <div id="mequierocambiar" class="alternate-body">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>¡Me quiero cambiar!</h1>
+        <p>Para ésto es necesario presentarse en el prestador de salud elegido, personalmente.</p>
+      </div>
+      <div class="col-md-6">
+        <p>Recordá que sólo pueden cambiarse quienes tengan un <strong>mínimo de tres años en su prestador de salud actual</strong> y que <strong>sólo pueden hacerlos hasta el 28 de febrero.</strong>
+        </p>
+        <p><strong>¿Más dudas?</strong> Consultá en el sitio: <a class="button" href="http://www.msp.gub.uy">www.msp.gub.uy</a>
+        </p>
+      </div>
+    </div>
+  </div>
 <% end %>
