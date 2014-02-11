@@ -81,8 +81,8 @@
 
 <section class="resultados" <% if prioridades.empty? %>style="display: none;" <% end %>>
   <h3>
-    <% if (prioridades.length > 1) %>
-    Ranking de prestadores de salud de <%= departamento %>, considerando consultas<% if ginecologia %> ginecologicas<% end %><% if pediatria %> y pediatría<% end %><% if fonasa %> para afiliados por FONASA<% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridades[:prioridad]] %>:
+    <% if (prioridades.length > 1) %> 
+    Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridades[:prioridad]] %>: 
     <% end %>
   </h3>
 
