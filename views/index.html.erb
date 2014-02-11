@@ -2,6 +2,7 @@
     ginecologia = prioridades.length == 0 || prioridades[:ginecologia]
     pediatria = prioridades.length == 0 || prioridades[:pediatria]
     fonasa = prioridades.length == 0 || prioridades[:fonasa]
+    prioridad = prioridades[:prioridad]
 %>
 
 <div class="alternate-body">
@@ -53,22 +54,22 @@
         <div class="col-md-6 text-left" style="border-left: 1px solid #d63d34;"> <!-- tercera columna -->
           <div class="">
             <label>
-              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="costo"> Precio de los tickets
+              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="costo" <% if prioridad == 'costo' %>checked<% end %>> Precio de los tickets
             </label>
           </div>
           <div class="">
             <label>
-              <input type="radio" id="radioPrioridadT" name="radioPrioridad" value="tiempo"> Tiempos de espera para consulta
+              <input type="radio" id="radioPrioridadT" name="radioPrioridad" value="tiempo" <% if prioridad == 'tiempo' %>checked<% end %>> Tiempos de espera para consulta
             </label>
           </div>
           <div class="">
            <label>
-              <input type="radio" id="radioPrioridadD" name="radioPrioridad" value="derechos"> Derechos de los usuarios
+              <input type="radio" id="radioPrioridadD" name="radioPrioridad" value="derechos" <% if prioridad == 'derechos' %>checked<% end %>> Derechos de los usuarios
             </label>
           </div>
           <div class="">
             <label>
-              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="personal"> Cantidad de personal disponible
+              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="personal" <% if prioridad == 'personal' %>checked<% end %>> Cantidad de personal disponible
             </label>
           </div>
         </div> <!-- tercera columna -->
@@ -82,7 +83,7 @@
 <section class="resultados" <% if prioridades.empty? %>style="display: none;" <% end %>>
   <h3>
     <% if (prioridades.length > 1) %> 
-    Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridades[:prioridad]] %>: 
+    Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %>: 
     <% end %>
   </h3>
 
