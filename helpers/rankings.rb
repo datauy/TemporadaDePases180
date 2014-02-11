@@ -61,6 +61,8 @@ module Helpers
                     'ESTUDIO_LABORATORIO_FONASA']
             end
 
+            variables = []
+
             case prioridades[:prioridad]
             when 'costo'
                 variables = ['MEDICAMENTOS_GENERAL', 'MEDICAMENTOS_GENERAL_FONASA', 'MEDICAMENTOS_TOPEADOS', 'MEDICAMENTOS_TOPEADOS_FONASA', 
@@ -80,6 +82,8 @@ module Helpers
                 variables = ['ENT_QUEJAS', 'ENT_DERECHOS'] - variables_a_ignorar
             when 'personal'
                 variables = ['PERSONAL_CANT_MED', 'PERSONAL_CANT_GIN', 'PERSONAL_CANT_PED', 'PERSONAL_CANT_ENF', 'PERSONAL_CANT_LICEN'] - variables_a_ignorar
+            else
+                variables = todas_las_variables
             end
 
             return variables
@@ -102,26 +106,34 @@ module Helpers
             mutualistas = []
             unless prioridades.empty?
                 # tomamos los datos para solo mutualistas del departamento
-                mutualistas = get_mutualistas(departamento.upcase)
+                todas_las_mutualistas = get_mutualistas(departamento.upcase)
 
-
-                # en base a las opciones y la prioridad vemos que variables hay que sumar
+                # en base a las opciones y la prioridad tomamos que variables hay que sumar
                 variables_a_usar = filtrar_variables(prioridades)
-                for mutu in mutualistas do
-                    mutu[:ranking] = calcular_ranking(mutu, variables_a_usar)
+
+                # algunas mutualistas tienen todos los datos y otras no. Solo vamos a rankear las que tienen todos los datos
+                mutualistas_completas   = []
+                mutualistas_incompletas = []
+
+                # calcular el ranking de solo las mutualistas con datos completos
+                for mutu in todas_las_mutualistas do
+                    if to_boolean(mutu['INCOMPLETA'])
+                        mutu[:ranking] = 0
+                        mutualistas_incompletas << mutu
+                    else
+                        mutu[:ranking] = calcular_ranking(mutu, variables_a_usar)
+                        mutualistas_completas << mutu
+                    end
                 end
 
-                mutualistas.sort_by { |m| m[:ranking] }
-
-                # TODO: It fails to sort by this two ways
                 # ordenar el ranking de acuerdo a valor de ranking hallado (precio o tiempo en subida y derechos o personal en bajada)
-                #if prioridades[:prioridad] == "tiempo" || prioridades[:prioridad] == "costo" 
-                #    mutualistas.sort_by { |a,b| a[:ranking] <= b[:ranking]}
-                #else # personal o derechos
-                #    mutualistas.sort_by { |a,b| a[:ranking] >= b[:ranking]}
-                #end
+                if prioridades[:prioridad] == "tiempo" || prioridades[:prioridad] == "costo" 
+                    mutualistas_completas.sort_by { |m| m[:ranking] }
+                else # personal o derechos
+                    mutualistas_completas.sort_by { |m| m[:ranking] }.reverse
+                end
 
-                return mutualistas
+                return mutualistas_completas + mutualistas_incompletas
             end
 
             return mutualistas
@@ -130,9 +142,9 @@ module Helpers
         # don't like this to be monkey patch
         def to_boolean(palabra)
             case palabra
-            when 'false'
+            when 'false' || 'FALSE'
                 return false
-            when 'true'
+            when 'true' || 'TRUE'
                 return true
             else
                 return nil
@@ -148,7 +160,8 @@ module Helpers
                 prioridades[:ginecologia] = to_boolean(opciones[:ginecologia])
                 prioridades[:pediatria] = to_boolean(opciones[:pediatria])
                 prioridades[:fonasa] = to_boolean(opciones[:fonasa])
-                prioridades[:prioridad] = opciones[:prioridad]
+
+                prioridades[:prioridad] =  opciones[:prioridad].nil? ? 'costo' : opciones[:prioridad]
             end
 
             return prioridades
