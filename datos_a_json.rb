@@ -33,59 +33,19 @@ module DatosMutualistas
             
             mutualistas_csv = CSV.read(DATA_FILE, 'r', :headers => true)
 
-            for departamento in DEPARTAMENTOS do
-                mutualistas = []
+            mutualistas = {}
+            DEPARTAMENTOS.each { |d| mutualistas[d] = []}
 
-                mutualistas_csv.each do |mutu|
-                    # filtrar por departamento 
-                    if mutu[departamento] == '1'
-
-                        # eliminamos los keys de departamentos
-                        for dep in DEPARTAMENTOS do
-                            mutu.tap { |hm| hm.delete(dep) }
-                        end
-
-                        # pasamos los key a symbol
-                        mejor_mutu = mutu.to_hash.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-
-                        # mejoraremos los datos de mutualista
-                        mejor_mutu[:COSTO] = {
-                            :MEDICAMENTOS            => calcular_medicamento(mejor_mutu),
-                            :CONSULTAS_NO_URGENTES   => calcular_no_urgentes(mejor_mutu), 
-                            :CONSULTAS_URGENTES      => calcular_urgentes(mejor_mutu), 
-                            :ESTUDIOS_Y_LABORATORIOS => calcular_estudios(mejor_mutu)
-                        }
-                        mejor_mutu[:METAS] = {
-                            :NINOS        => mejor_mutu[:META_NINOS], 
-                            :EMBARAZADAS  => mejor_mutu[:META_EMBARAZADAS], 
-                            :ADOLESCENTE  => mejor_mutu[:META_ADOLESCENTE], 
-                            :ADULTO       => mejor_mutu[:META_ADULTO], 
-                            :ADULTO_MAYOR => mejor_mutu[:META_ADULTO_MAYOR]
-                        }
-                        mejor_mutu[:TIEMPOS_ESPERA] = {
-                            :MEDICINA_GENERAL => mejor_mutu[:TIEMPO_ESP_MED_GEN], 
-                            :PEDIATRIA        => mejor_mutu[:TIEMPO_ESP_PEDIATRIA], 
-                            :CIRUGIA_GENERAL  => mejor_mutu[:TIEMPO_ESP_CIRUG], 
-                            :GINECOLOGIA      => mejor_mutu[:TIEMPO_ESP_GIN]        
-                        }
-                        mejor_mutu[:SATISFACCION] = {
-                            :QUEJAS   => mejor_mutu[:ENT_QUEJAS],
-                            :DERECHOS => mejor_mutu[:ENT_DERECHOS]    
-                        }                    
-                        mejor_mutu[:PERSONAL] = {
-                            :MEDICOS      => mejor_mutu[:PERSONAL_CANT_MED], 
-                            :GINECOLOGOS  => mejor_mutu[:PERSONAL_CANT_GIN], 
-                            :PEDIATRAS    => mejor_mutu[:PERSONAL_CANT_PED], 
-                            :ENFERMEROS   => mejor_mutu[:PERSONAL_CANT_ENF ], 
-                            :LICENFER     => mejor_mutu[:PERSONAL_CANT_LICENF]
-                        }
-
-
-                        mutualistas << mejor_mutu
+            mutualistas_csv.each do |mutu| 
+                for departamento in DEPARTAMENTOS do
+                    if atiende(mutu, departamento)              
+                        mutualistas[departamento]  << mejoramos(mutu)
                     end
                 end
-
-                write_to_json(departamento, mutualistas)
+            end
+ 
+            for departamento in DEPARTAMENTOS do
+                write_to_json(departamento, mutualistas[departamento])
             end
         end
 
@@ -192,6 +152,56 @@ module DatosMutualistas
             end
 
             return costos_estudios
+        end
+
+        def self.atiende(mutualista, departamento)
+            return (mutualista[departamento] == 'TRUE')
+        end
+
+        def self.eliminamos_departamentos(mutualista)
+            # eliminamos los keys de departamentos
+            for dep in DEPARTAMENTOS do
+                mutualista.delete(dep)
+            end
+        end
+
+        def self.mejoramos(mutualista)    
+             # pasamos los key a symbol y sacamos los departamentos
+            mejor_mutu = mutualista.to_hash.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+
+            # mejoraremos los datos de mutualista
+            mejor_mutu[:COSTO] = {
+                :MEDICAMENTOS            => calcular_medicamento(mejor_mutu),
+                :CONSULTAS_NO_URGENTES   => calcular_no_urgentes(mejor_mutu), 
+                :CONSULTAS_URGENTES      => calcular_urgentes(mejor_mutu), 
+                :ESTUDIOS_Y_LABORATORIOS => calcular_estudios(mejor_mutu)
+            }
+            mejor_mutu[:METAS] = {
+                :NINOS        => mejor_mutu[:META_NINOS], 
+                :EMBARAZADAS  => mejor_mutu[:META_EMBARAZADAS], 
+                :ADOLESCENTE  => mejor_mutu[:META_ADOLESCENTE], 
+                :ADULTO       => mejor_mutu[:META_ADULTO], 
+                :ADULTO_MAYOR => mejor_mutu[:META_ADULTO_MAYOR]
+            }
+            mejor_mutu[:TIEMPOS_ESPERA] = {
+                :MEDICINA_GENERAL => mejor_mutu[:TIEMPO_ESP_MED_GEN], 
+                :PEDIATRIA        => mejor_mutu[:TIEMPO_ESP_PEDIATRIA], 
+                :CIRUGIA_GENERAL  => mejor_mutu[:TIEMPO_ESP_CIRUG], 
+                :GINECOLOGIA      => mejor_mutu[:TIEMPO_ESP_GIN]        
+            }
+            mejor_mutu[:SATISFACCION] = {
+                :QUEJAS   => mejor_mutu[:ENT_QUEJAS],
+                :DERECHOS => mejor_mutu[:ENT_DERECHOS]    
+            }                    
+            mejor_mutu[:PERSONAL] = {
+                :MEDICOS      => mejor_mutu[:PERSONAL_CANT_MED], 
+                :GINECOLOGOS  => mejor_mutu[:PERSONAL_CANT_GIN], 
+                :PEDIATRAS    => mejor_mutu[:PERSONAL_CANT_PED], 
+                :ENFERMEROS   => mejor_mutu[:PERSONAL_CANT_ENF ], 
+                :LICENFER     => mejor_mutu[:PERSONAL_CANT_LICENF]
+            }
+
+            return mejor_mutu
         end
 
         def self.write_to_json (departamento, mutualistas)
