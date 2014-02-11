@@ -59,8 +59,16 @@ h2, .h2 {
     margin-top: 0;
 }
 
+.Mr-10 {
+    margin-right: 10px;
+}
+
 .Mb-0 {
     margin-bottom: 0;
+}
+
+.Ml-10 {
+    margin-left: 10px;
 }
 
 .Fw-n {

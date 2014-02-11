@@ -13,62 +13,64 @@
         <div class="col-xs-6 text-right"> <!-- primera columna -->
           <div class="form-control">
             Consultas de Ginecologia:
-            <label class="Fw-n">
+            <label class="Fw-n Ml-10">
               Si <input type="radio" name="opcionGinecologia" id="ginecologiaRadioSi" value="true" <% if ginecologia %>checked<% end %>>
             </label>
-            <label class="Fw-n">
+            <label class="Fw-n Ml-10">
               No <input type="radio" name="opcionGinecologia" id="ginecologiaRadioNo" value="false" <% if !ginecologia %>checked<% end %>>
             </label>
           </div>
           <div class="form-control">
             Consultas de Pediatría:
-            <label class="Fw-n">
+            <label class="Fw-n Ml-10">
               Si <input type="radio" name="opcionPediatria" id="pediatriaRadioSi" value="true" <% if pediatria %>checked<% end %>>
             </label>
-            <label class="Fw-n">
+            <label class="Fw-n Ml-10">
               No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false" <% if !pediatria %>checked<% end %>>
             </label>
             <!--<span class="help-tooltip help-icon" title="Vas a tener a niños afiliados a la mutualista?"></span>-->
           </div>
           <div class="form-control">
             Afiliado de FONASA:
-            <label class="Fw-n">
+            <label class="Fw-n Ml-10">
               Si <input type="radio" name="opcionFonasa" id="fonasaRadioSi" value="true" <% if fonasa %>checked<% end %>>
             </label>
-            <label class="Fw-n">
+            <label class="Fw-n Ml-10">
               No <input type="radio" name="opcionFonasa" id="fonasaRadioNo" value="false" <% if !fonasa %>checked<% end %>>
             </label>
           </div>
           <div class="form-control">
-            Departamento:
-            <select id="departamento" name="departamento" placeholder=".col-xs-4">
-              <% ["artigas", "canelones", "cerro_largo", "colonia", "durazno", "flores", "florida", "lavalleja", "maldonado", "montevideo", "paysandu", "rio_negro", "rivera", "rocha", "salto", "san_jose", "soriano", "tacuarembo", "treinta_y_tres"].sort.each do |sel_departamento| %>
-                <option value="<%= sel_departamento %>" <% if departamento == sel_departamento %>selected="selected"<% end %>>
-                  <%= sel_departamento.capitalize! %>
-                </option>
-              <% end %>
-            </select>
+            <label class="Fw-n" for="departamento">
+                Departamento:
+                <select id="departamento" name="departamento" placeholder=".col-xs-4">
+                  <% ["artigas", "canelones", "cerro_largo", "colonia", "durazno", "flores", "florida", "lavalleja", "maldonado", "montevideo", "paysandu", "rio_negro", "rivera", "rocha", "salto", "san_jose", "soriano", "tacuarembo", "treinta_y_tres"].sort.each do |sel_departamento| %>
+                    <option value="<%= sel_departamento %>" <% if departamento == sel_departamento %>selected="selected"<% end %>>
+                      <%= sel_departamento.capitalize! %>
+                    </option>
+                  <% end %>
+                </select>
+            </label>
           </div>
         </div> <!-- primera columna -->
         <div class="col-xs-6 text-left">
           <div class="form-control">
             <label class="Fw-n">
-              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="costo" <% if prioridad == 'costo' %>checked<% end %>> Precio de los tickets
+              <input type="radio" id="radioPrioridadC" class="" name="radioPrioridad" value="costo" <% if prioridad == 'costo' %>checked<% end %>> Precio de los tickets
             </label>
           </div>
           <div class="form-control">
             <label class="Fw-n">
-              <input type="radio" id="radioPrioridadT" name="radioPrioridad" value="tiempo" <% if prioridad == 'tiempo' %>checked<% end %>> Tiempos de espera para consulta
+              <input type="radio" id="radioPrioridadT" class="" name="radioPrioridad" value="tiempo" <% if prioridad == 'tiempo' %>checked<% end %>> Tiempos de espera para consulta
             </label>
           </div>
           <div class="form-control">
            <label class="Fw-n">
-              <input type="radio" id="radioPrioridadD" name="radioPrioridad" value="derechos" <% if prioridad == 'derechos' %>checked<% end %>> Derechos de los usuarios
+              <input type="radio" id="radioPrioridadD" class="" name="radioPrioridad" value="derechos" <% if prioridad == 'derechos' %>checked<% end %>> Derechos de los usuarios
             </label>
           </div>
           <div class="form-control">
             <label class="Fw-n">
-              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="personal" <% if prioridad == 'personal' %>checked<% end %>> Cantidad de personal disponible
+              <input type="radio" id="radioPrioridadC" class="" name="radioPrioridad" value="personal" <% if prioridad == 'personal' %>checked<% end %>> Cantidad de personal disponible
             </label>
           </div>
         </div> <!-- tercera columna -->
