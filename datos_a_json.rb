@@ -110,33 +110,74 @@ module DatosMutualistas
         # TIEMPOS_ESPERA => { MEDICINA_GENERAL, PEDIATRIA, CIRUGIA_GENERAL, GINECOLOGIA}
         # PERSONAL => {MEDICOS, GINECOLOGOS, PEDIATRAS, ENFERMEROS, LICENFER}
 
+        def self.sin_datos(*variables)
+            for var in variables
+                if var == 's/d'
+                    return false
+                end
+            end
+            return true
+        end
+
         # todos los costos se calculan como promedios de esos campos
         def self.calcular_medicamento(mutualista)
 
-            # promedio de TICKET DE MEDICAMENTOS - GENERA, MEDICAMENTOS_GENERAL_FONASA, MEDICAMENTOS_TOPEADOS , MEDICAMENTOS_TOPEADOS_FONASA
-            costos_medicamentos = (mutualista[:MEDICAMENTOS_GENERAL].to_i + mutualista[:MEDICAMENTOS_GENERAL_FONASA].to_i + 
+            if sin_datos(mutualista[:MEDICAMENTOS_GENERAL],mutualista[:MEDICAMENTOS_GENERAL_FONASA].to_i, 
+                mutualista[:MEDICAMENTOS_TOPEADOS],mutualista[:MEDICAMENTOS_TOPEADOS_FONASA])
+                costos_medicamentos = 's/d'
+            else
+                # promedio de TICKET DE MEDICAMENTOS - GENERA, MEDICAMENTOS_GENERAL_FONASA, MEDICAMENTOS_TOPEADOS , MEDICAMENTOS_TOPEADOS_FONASA
+                costos_medicamentos = (mutualista[:MEDICAMENTOS_GENERAL].to_i + mutualista[:MEDICAMENTOS_GENERAL_FONASA].to_i + 
             mutualista[:MEDICAMENTOS_TOPEADOS].to_i + mutualista[:MEDICAMENTOS_TOPEADOS_FONASA].to_i)/4
+            end
 
             return costos_medicamentos
         end
         def self.calcular_no_urgentes(mutualista)
+            if sin_datos(mutualista[:CONSULTA_GENERAL], mutualista[:CONSULTA_GENERAL_FONASA], 
+                mutualista[:CONSULTA_PEDIATRIA], mutualista[:CONSULTA_PEDIATRIA_FONASA], mutualista[:CONTROL_EMBARAZO],
+                mutualista[:CONTROL_EMBARAZO_FONASA], mutualista[:CONSULTA_GINECOLOGIA], 
+                mutualista[:CONSULTA_GINECOLOGIA_FONASA], mutualista[:CONSULT_OTR_ESP], 
+                mutualista[:CONSULT_OTR_ESP_FONASA], mutualista[:CONSULTA_NO_URG_DOM], 
+                mutualista[:CONSULTA_NO_URG_DOM_FONASA], mutualista[:CONS_ODONT], mutualista[:CONS_ODONT_FONASA], 
+                mutualista[:CONS_MED_REF], mutualista[:CONS_MED_REF_FONASA])
+                costos_no_urgentes = 's/d'
+            else
             costos_no_urgentes = (mutualista[:CONSULTA_GENERAL].to_i+mutualista[:CONSULTA_GENERAL_FONASA].to_i+
                 mutualista[:CONSULTA_PEDIATRIA].to_i+mutualista[:CONSULTA_PEDIATRIA_FONASA].to_i+mutualista[:CONTROL_EMBARAZO].to_i+
                 mutualista[:CONTROL_EMBARAZO_FONASA].to_i+mutualista[:CONSULTA_GINECOLOGIA].to_i+
                 mutualista[:CONSULTA_GINECOLOGIA_FONASA].to_i+mutualista[:CONSULT_OTR_ESP].to_i+mutualista[:CONSULT_OTR_ESP_FONASA].to_i+
                 mutualista[:CONSULTA_NO_URG_DOM].to_i+mutualista[:CONSULTA_NO_URG_DOM_FONASA].to_i+mutualista[:CONS_ODONT].to_i+  
                 mutualista[:CONS_ODONT_FONASA].to_i+mutualista[:CONS_MED_REF].to_i+mutualista[:CONS_MED_REF_FONASA].to_i)/16
-
+            end
             return costos_no_urgentes
         end
         def self.calcular_urgentes(mutualista)
-            costos_urgentes = (mutualista[:CONS_URG_CENTRALIZADA].to_i+mutualista[:CONS_URG_CENTRALIZADA_FONASA].to_i+
-                mutualista[:CONS_URG_DOM].to_i+mutualista[:CONS_URG_DOM_FONASA].to_i)/4
-
+            if sin_datos(mutualista[:CONS_URG_CENTRALIZADA], mutualista[:CONS_URG_CENTRALIZADA_FONASA],
+                mutualista[:CONS_URG_DOM], mutualista[:CONS_URG_DOM_FONASA])
+                costos_urgentes = 's/d'
+            else
+                costos_urgentes = (mutualista[:CONS_URG_CENTRALIZADA].to_i+mutualista[:CONS_URG_CENTRALIZADA_FONASA].to_i+
+                    mutualista[:CONS_URG_DOM].to_i+mutualista[:CONS_URG_DOM_FONASA].to_i)/4
+            end
             return costos_urgentes
         end
         def self.calcular_estudios(mutualista)
-            costos_estudios = (mutualista[:ESTUDIO_ENDOSCOPIA].to_i+mutualista[:ESTUDIO_ENDOSCOPIA_FONASA].to_i+
+            if sin_datos(mutualista[:ESTUDIO_ENDOSCOPIA], mutualista[:ESTUDIO_ENDOSCOPIA_FONASA],
+                mutualista[:ESTUDIO_ECOGRAFIA_SIMPLE], mutualista[:ESTUDIO_ECOGRAFIA_SIMPLE_FONASA],
+                mutualista[:ESTUDIO_ECOGRAFIA_OBS], mutualista[:ESTUDIO_ECOGRAFIA_OBS_FONASA],
+                mutualista[:ESTUDIO_ECODOPPLER], mutualista[:ESTUDIO_ECODOPPLER_FONASA],
+                mutualista[:ESTUDIO_IMAGEN_ABDOMEN], mutualista[:ESTUDIO_IMAGEN_ABDOMEN_FONASA],
+                mutualista[:ESTUDIO_IMAGEN_TORAX], mutualista[:ESTUDIO_IMAGEN_TORAX_FONASA],
+                mutualista[:ESTUDIO_IMAGEN_COLORECTAL], mutualista[:ESTUDIO_IMAGEN_COLORECTAL_FONASA],
+                mutualista[:ESTUDIO_RESONANCIA], mutualista[:ESTUDIO_RESONANCIA_FONASA],
+                mutualista[:ESTUDIO_TOMOGRAFIA], mutualista[:ESTUDIO_TOMOGRAFIA_FONASA],
+                mutualista[:ESTUDIO_LABORATORIO], mutualista[:ESTUDIO_LABORATORIO_FONASA],
+                mutualista[:TIEMPO_ESP_MED_GEN], mutualista[:TIEMPO_ESP_PEDIATRIA], mutualista[:TIEMPO_ESP_CIRUG],
+                mutualista[:TIEMPO_ESP_GIN])
+                costos_estudios = 's/d'
+            else
+             costos_estudios = (mutualista[:ESTUDIO_ENDOSCOPIA].to_i+mutualista[:ESTUDIO_ENDOSCOPIA_FONASA].to_i+
                 mutualista[:ESTUDIO_ECOGRAFIA_SIMPLE].to_i+mutualista[:ESTUDIO_ECOGRAFIA_SIMPLE_FONASA].to_i+
                 mutualista[:ESTUDIO_ECOGRAFIA_OBS].to_i+mutualista[:ESTUDIO_ECOGRAFIA_OBS_FONASA].to_i+
                 mutualista[:ESTUDIO_ECODOPPLER].to_i+mutualista[:ESTUDIO_ECODOPPLER_FONASA].to_i+
@@ -148,6 +189,7 @@ module DatosMutualistas
                 mutualista[:ESTUDIO_LABORATORIO].to_i+mutualista[:ESTUDIO_LABORATORIO_FONASA].to_i+
                 mutualista[:TIEMPO_ESP_MED_GEN].to_i+mutualista[:TIEMPO_ESP_PEDIATRIA].to_i+mutualista[:TIEMPO_ESP_CIRUG].to_i +
                 mutualista[:TIEMPO_ESP_GIN].to_i)/24
+            end
 
             return costos_estudios
         end

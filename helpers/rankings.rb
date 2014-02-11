@@ -133,7 +133,9 @@ module Helpers
                     mutualistas_completas.sort_by { |m| m[:ranking] }.reverse
                 end
 
-                return mutualistas_completas + mutualistas_incompletas
+                mutualistas = mutualistas_completas + mutualistas_incompletas
+
+                return mutualistas
             end
 
             return mutualistas
@@ -161,7 +163,7 @@ module Helpers
                 prioridades[:pediatria] = to_boolean(opciones[:pediatria])
                 prioridades[:fonasa] = to_boolean(opciones[:fonasa])
 
-                prioridades[:prioridad] =  opciones[:prioridad].nil? ? 'costo' : opciones[:prioridad]
+                prioridades[:prioridad] =  (opciones[:prioridad].nil? || opciones[:prioridad] == 'undefined') ? 'costo' : opciones[:prioridad]
             end
 
             return prioridades
