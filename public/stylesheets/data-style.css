@@ -321,15 +321,27 @@ footer .external-links a {
   
 }
 
+/* Resultados section *************************************/
+#aclaraciones {
+  margin: 40px 0;
+  font-size: 0.9em;
+}
+
+#aclaraciones p {
+  line-height: 6px;
+}
+
 /* Me quiero Cambiar section ******************************/
 #mequierocambiar:before {
   clear: both;
+  margin-top: 30px;
 }
 
 #mequierocambiar:after {
   content: '';
   display: block;
   clear:both;
+  margin-bottom: 30px;
 }
 
 #mequierocambiar .left {
