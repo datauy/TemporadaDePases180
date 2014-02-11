@@ -1,6 +1,6 @@
 /* Base  ***********************************************************/
 
-html {
+/*html {
   font-size: 16px;
 }
 
@@ -19,48 +19,127 @@ body {
   margin: 0;
 }
 
-body {
-  padding-top: 70px;
-  font-family: HelveticaNeue;
-}
-
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
+}*/
 
-a {
-  /*color: #d63d34;*/
+/*a {
   text-decoration: none;
 }
 
-/*a:active {
+a:active {
   color: #d63d34;
-}*/
+}
 
 a:hover {
   text-decoration: underline;
+}*/
+
+hr {
+    border-top-color: #d63d34;
 }
 
-h1 {
+h2, .h2 {
+    color: #999;
+    font-size: 30px;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+/*h3 {
     color: #d63d34;
-    font-size: 34px;
-    font-weight: bold;
+}*/
+
+/* Helpers ****************************************************************/
+
+.Mt-0 {
+    margin-top: 0;
 }
 
-h2 {
-    color: #999999;
-    font-size: 32px;    
+.Mb-0 {
+    margin-bottom: 0;
 }
 
-h3 {
-    color: #d63d34;
+.Fw-n {
+    font-weight: normal;
 }
+
+.highlight {
+    color: #d63d34 !important;
+}
+
+/* Extends ****************************************************************/
+
+.jumbotron-inverse {
+    background-color: white;
+}
+
+/* Components ****************************************************************/
+
+.alternate-body {
+    background-color: #f7f7f7;
+    border: solid #e7e7e7;
+    border-width: 1px 0;
+    padding: 10px 5px;
+}
+
+@media (min-width: 768px) {
+    .alternate-body {
+        padding: 20px;
+    }
+}
+
+.Aligner {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.Aligner-item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.Aligner-item--top {
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+}
+
+.Aligner-item--center {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+}
+
+.Aligner-item--bottom {
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+/* Custom *********************************************************/
 
 /* Cabezal *********************************************************/
 
-.logo {
+/*.logo {
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 4px;
@@ -72,11 +151,11 @@ h3 {
   margin-right: auto; 
   width:100px;
   padding-top: 15px;
-}
+}*/
 
 /* Contenido *********************************************************/
 
-.center {
+/*.center {
   float: none;
   margin-left: auto;
   margin-right: auto;
@@ -89,11 +168,11 @@ h3 {
 
 .center {
     text-align: center;
-}
+}*/
 
 /* Formulario **********************************************************/
 
-.formulario {
+/*.formulario {
     text-align: center;
     background-color: #f7f7f7;
     padding: 10px;
@@ -102,17 +181,17 @@ h3 {
 
 .separadorLinea {
     border-left: thick solid #ff0000;
-}
+}*/
 
 /* Name form */
-#preguntas-form {
-  /*padding: 20px 0;
-  text-align: center;*/
+/*#preguntas-form {
+  padding: 20px 0;
+  text-align: center;
   font-size: 1.5em;
   background-color: #f7f7f7;
-}
+}*/
 
-#preguntas-form .help-icon {
+/*#preguntas-form .help-icon {
   background: transparent url(/images/help-icon.png) no-repeat center center;
   width: 24px;
   height: 24px;
@@ -157,11 +236,11 @@ h3 {
   margin-left: -5px;
   border-width: 5px 5px 0;
   border-top-color: #000000;
-}
+}*/
 
 /* Resultado **********************************************************/
 
-.resultados {
+/*.resultados {
     text-align: center;
     padding: 10px;
     width: 100%;
@@ -203,10 +282,10 @@ h3 {
 
 .pie-de-tabla {
   font-size: 12px;
-}
+}*/
 
 /* Footer **********************************************************/
-footer {
+/*footer {
   text-align: center;
   font-size: 14px;
   padding-top: 40px;
@@ -224,10 +303,10 @@ footer .external-links a {
 .last-footer {
   padding-top: 50px;
   padding-bottom: 20px;
-}
+}*/
 
 /* Sharing ****************************************************************/
-#sharing {
+/*#sharing {
   text-align: center;
   overflow: auto;
   display: none;
