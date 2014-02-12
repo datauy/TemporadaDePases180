@@ -85,34 +85,26 @@
       <p class="h3 text-center jumbotron jumbotron-inverse Mb-0">Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
     <% end %>
 
-    <div id="carousel-resultados">
-      <!-- Indicators -->
-      <!-- <ol class="carousel-indicators">
-        <% for i in 0..(mutualistas.length-1) do %>
-          <li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li>
-        <% end %>
-      </ol> -->
-      <!-- Wrapper for slides -->
-        <div class="carousel-inner">
+    <div id="carousel-resultados" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
+      <!-- <ol class="carousel-indicators"><% for i in 0..(mutualistas.length-1) do %><li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li><% end %></ol> -->
+      <div class="carousel-inner">
         <% for mutualista in mutualistas do %>
           <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
             <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
           </div>
         <% end %>
       </div>
-      <!-- Controls -->
-      <!-- <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
-        <img src="<%= asset_path('images/izquierda.png') %>">
+      <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
       <a class="right carousel-control" href="#carousel-resultados" data-slide="next">
-        <img src="<%= asset_path('images/derecha.png') %>">
-      </a> -->
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
     </div>
   </section>
 
   <div class="container">
-    <p>Datos extraidos de la planilla de indicadores publicada por el <a href="http://msp.gub.uy">Ministerio de Salud Pública</a> <br> Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
-    <hr class="invisible">
+    <p class="Mb-0" style="padding: 25px 0;">Datos extraidos de la planilla de indicadores publicada por el <a href="http://msp.gub.uy">Ministerio de Salud Pública</a> <br> Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
   </div>
 
   <div id="mequierocambiar" class="alternate-body">
