@@ -95,12 +95,34 @@ h2, .h2 {
     opacity: 1;
 }
 
+@media (max-width: 767px) { 
+    .carousel-control {
+        display: none;
+    }
+}
+
 .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
     top: 35%;
 }
 
 .carousel-control:hover {
     color: #d63d34;
+}
+
+@media (max-width: 767px) {
+    .carousel-inner > .item {
+        display: block;
+    }
+
+    .carousel-inner .container {
+        padding: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .panel {
+        border-width: 1px 0;
+    }
 }
 
 /* Extends ****************************************************************/

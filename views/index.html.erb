@@ -28,7 +28,6 @@
             <label class="Fw-n Ml-10">
               No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false" <% if !pediatria %>checked<% end %>>
             </label>
-            <!--<span class="help-tooltip help-icon" title="Vas a tener a niños afiliados a la mutualista?"></span>-->
           </div>
           <div class="form-control">
             ¿Afiliado a FONASA?:
@@ -87,7 +86,6 @@
     <% end %>
 
     <div id="carousel-resultados" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
-      <!-- <ol class="carousel-indicators"><% for i in 0..(mutualistas.length-1) do %><li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li><% end %></ol> -->
       <div class="carousel-inner">
         <% for mutualista in mutualistas do %>
           <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
