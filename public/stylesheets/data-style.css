@@ -93,10 +93,8 @@ h2, .h2 {
      } 
  }
 
- @media (min-width: 768px) { 
-     .alternate-body { 
-         padding: 20px; 
-     } 
+ .progress-bar-kore {
+    background-color: #001F3F;
  }
 
 /* Components ****************************************************************/
