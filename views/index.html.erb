@@ -3,6 +3,7 @@
     pediatria = prioridades.empty? || prioridades[:pediatria]
     fonasa = prioridades.empty? || prioridades[:fonasa]
     prioridad = prioridades[:prioridad]
+    departamentos = {"artigas"=>"Artigas", "canelones"=>"Canelones", "cerro_largo"=>"Cerro Largo", "colonia"=>"Colonia", "durazno"=>"Durazno", "flores"=>"Flores", "florida"=>"Florida", "lavalleja"=>"Lavalleja", "maldonado"=>"Maldonado", "montevideo"=>"Montevideo", "paysandu"=>"Paysandu", "rio_negro"=>"Rio Negro", "rivera"=>"Rivera", "rocha"=>"Rocha", "salto"=>"Salto", "san_jose"=>"San José", "soriano"=>"Soriano", "tacuarembo"=>"Tacuarembo", "treinta_y_tres" => "Treinta y Tres"}
 %>
 <div class="alternate-body">
   <div class="container formulario">
@@ -42,9 +43,9 @@
             <label class="Fw-n" for="departamento">
                 Departamento:
                 <select id="departamento" name="departamento" placeholder=".col-xs-4">
-                  <% ["artigas", "canelones", "cerro_largo", "colonia", "durazno", "flores", "florida", "lavalleja", "maldonado", "montevideo", "paysandu", "rio_negro", "rivera", "rocha", "salto", "san_jose", "soriano", "tacuarembo", "treinta_y_tres"].sort.each do |sel_departamento| %>
+                  <% departamentos.keys.each do |sel_departamento| %>
                     <option value="<%= sel_departamento %>" <% if departamento == sel_departamento %>selected="selected"<% end %>>
-                      <%= sel_departamento.capitalize! %>
+                      <%= departamentos[sel_departamento] %>
                     </option>
                   <% end %>
                 </select>
