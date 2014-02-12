@@ -44,10 +44,10 @@
                 <div class="col-xs-4 text-right"><b>Tiempos de espera:</b></div>
                 <div class="col-xs-7">
                     <div class="progress Mb-0">
-                        <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Medicina general" style="width: <%= ( espera['MEDICINA_GENERAL'].to_f * 100 )/espera_max %>%"><%= espera['MEDICINA_GENERAL'] %></div>
-                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Pediatria" style="width: <%= (espera['PEDIATRIA'].to_f * 100)/espera_max %>%"><%= espera['PEDIATRIA'] %></div>
-                        <div class="progress-bar progress-bar-success" data-toggle="tooltip" title="Cirugía general" style=" width: <%= (espera['CIRUGIA_GENERAL'].to_f * 100)/espera_max %>%"><%= espera['CIRUGIA_GENERAL'] %></div>
-                        <div class="progress-bar progress-bar-info" data-toggle="tooltip" title="Ginecología" style="width: <%= (espera['GINECOLOGIA'].to_f * 100)/espera_max %>%"><%= espera['GINECOLOGIA'] %></div>
+                        <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Medicina general" style="min-width: 5%; width: <%= ( espera['MEDICINA_GENERAL'].to_f * 1000 )/espera_max %>%"><%= espera['MEDICINA_GENERAL'] %></div>
+                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Pediatria" style="min-width: 5%; width: <%= (espera['PEDIATRIA'].to_f * 1000)/espera_max %>%"><%= espera['PEDIATRIA'] %></div>
+                        <div class="progress-bar progress-bar-success" data-toggle="tooltip" title="Cirugía general" style=" min-width: 5%; width: <%= (espera['CIRUGIA_GENERAL'].to_f * 1000)/espera_max %>%"><%= espera['CIRUGIA_GENERAL'] %></div>
+                        <div class="progress-bar progress-bar-info" data-toggle="tooltip" title="Ginecología" style="min-width: 5%; width: <%= (espera['GINECOLOGIA'].to_f * 1000)/espera_max %>%"><%= espera['GINECOLOGIA'] %></div>
                     </div>
                 </div>
                 <div class="col-xs-1 text-center"></div>
