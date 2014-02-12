@@ -8,13 +8,7 @@
 <div class="container">
     <div class="panel panel-danger Mb-0">
         <div class="panel-heading">
-            <div class="row">
-                <div class="col-xs-11">
-                    <h4 class="panel-title"><%= posicion %> - <%= mutualista['NOMBRE'] %></h4>
-                </div>
-                <div class="col-xs-1 text-center">
-                </div>
-            </div>
+            <h4 class="panel-title"><%= posicion %> - <%= mutualista['NOMBRE'] %></h4>
         </div>
         <div class="panel-body">
             <div class="row Mb-10">
@@ -79,7 +73,7 @@
             </div>
             <div class="row Mb-10">
                 <div class="col-xs-4 text-right"><b>Asignación de citas:</b></div>
-                <div class="col-xs-8">
+                <div class="col-xs-7">
                 <% if mutualista['CITAS_PERSONAL'] %>
                     <span class="label label-danger"><i class="glyphicon glyphicon-user"></i></span>
                 <% end %>
@@ -93,7 +87,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-4 text-right"><b>Recordatorio consultas:</b></div>
-                <div class="col-xs-8">
+                <div class="col-xs-7">
                 <% if mutualista['RECORDATORIO_TELEFONO'] %>
                     <span class="label label-success"><i class="glyphicon glyphicon-earphone"></i></span>
                 <% end %>
