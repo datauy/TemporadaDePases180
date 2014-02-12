@@ -83,7 +83,7 @@
 <% if !prioridades.empty? %>
   <section class="resultados">
     <% if (prioridades.length > 1) %>
-      <p class="h3 text-center jumbotron jumbotron-inverse Mb-0">Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
+      <p class="h3 text-center jumbotron jumbotron-inverse Mb-0">Ranking de prestadores de salud de <span class="highlight"><%= departamentos[departamento] %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
     <% end %>
 
     <div id="carousel-resultados" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
