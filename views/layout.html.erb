@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="es"> <![endif]-->
+<!--[if gt IE 10]><!--> <html class="no-js" lang="es" dir="ltr"> <!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Temporada de Pases - 180 Ciencia - DATAUY</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="description" content="Temporada de Pases para Mutualistas" />
   <meta name="keywords" content="data,mutualistas,montevideo,uruguay,anii,ministerio de salud publica,msp" />
-  <meta http-equiv="Content-Language" content="en" />
 
-  <link href="<%= asset_path('images/favicon.png') %>" rel="shortcut icon" type="image/png" />
-  <link href="<%= stylesheet_path('jqplot.css') %>" rel="stylesheet" type="text/css" />
-  <link href="<%= stylesheet_path('bootstrap.min.css') %>" rel="stylesheet" type="text/css" />
-  <link href="<%= stylesheet_path('data-style.css') %>" rel="stylesheet" type="text/css" />
-
-  <!--<script src="<%= javascript_path('modernizr.min.js') %>"></script>-->
+  <link href="<%= asset_path('images/favicon.png') %>" rel="shortcut icon" type="image/png">
+  <link href="<%= stylesheet_path('bootstrap.min.css') %>" rel="stylesheet" type="text/css">
+  <link href="<%= stylesheet_path('data-style.css') %>" rel="stylesheet" type="text/css">
 </head>
 <body>
+  <!--[if lt IE 10]>
+      <p class="browsehappy">Usted esta usando un navegador <strong>viejo</strong>. Por favor <a href="http://browsehappy.com/">actualize su navegador</a> para mejorar su experiencia.</p>
+  <![endif]-->
+
   <header class="alternate-body">
     <div class="container">
       <div class="row Aligner">
-        <div class="col-md-4 Aligner-item Aligner-item--bottom text-left">
+        <div class="col-xs-4 Aligner-item Aligner-item--bottom text-left">
           <a href="#"><img src="<%= asset_path('images/180CIENCIA.png') %>" alt="180 Ciencia"></a>
         </div>
-        <div class="col-md-4 Aligner-item Aligner-item--bottom text-center">
-          <a href="https://twitter.com/share" class="twitter-share-button" data-via="DataUY" data-lang="es" data-related="portal180">Twittear</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-          <div class="fb-like" data-href="<%= url %>" data-width="80" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+        <div class="col-xs-4 Aligner-item Aligner-item--bottom text-center">
+          <div class="Aligner">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-text="¿Querés conocer qué mutualista te conviene? @DATAuy y @portal180 te lo muestran en base a datos." data-lang="es"></a>
+            <div class="fb-share-button" data-href="http://data.180.com.uy/mutualistas" data-type="button_count"></div>
+          </div>
         </div>
-        <div class="col-md-4 Aligner-item Aligner-item--bottom text-right">
+        <div class="col-xs-4 Aligner-item Aligner-item--bottom text-right">
           <a href="http://www.datauy.org"><img src="<%= asset_path('images/DATA_arriba.png') %>" alt="DATA" style="margin-top: -5px"></a>
         </div>
       </div>
@@ -38,7 +40,7 @@
 
   <section id="introduction" class="jumbotron jumbotron-inverse Mb-0 introduction">
     <div class="container">
-      <div class="row">
+      <div class="row Aligner">
         <div class="col-sm-3">
           <img class="img-responsive center-block" src="<%= asset_path('images/temporada_de_pases.png') %>" alt="Temporada de Pases">
         </div>
@@ -53,66 +55,92 @@
     </div>
   </section><!-- /.container -->
 
-  <section id="principal">
+  <main id="principal" role="main">
     <%= yield %>
-  </section>
+  </main>
 
   <footer>
     <div class="container">
-      <div class="row">
-        <div class="col-md-4"><img src="<%= asset_path('images/180DATA.png') %>" class="navbar-left logo"></div>
-        <div class="col-md-6">
-          <p>180 CIENCIA y DATA trabajan juntos en el proyecto <span class="180data">180DATA</span> para crear aplicaciones periodisticas que ayuden a descubrir y comprender la realidad utilizando Datos Abiertos.<br><span class="180data">180DATA</span> es un proyecto que cuenta con la financiación de ANII.</p>
-          <p>_________________________________________________________________</p>
-          <p>¿Querés más? <a href="http://data.180.com.uy" class="external-links">Descubri estadisticas de tu nombre en esta app.</a></p>
+      <div class="row Aligner" style="padding: 35px 0;">
+        <div class="col-sm-8 col-sm-push-2 col-xs-12">
+          <p>180 CIENCIA y DATA trabajan juntos en el proyecto <span class="180data">180DATA</span> para crear aplicaciones periodisticas que ayuden a descubrir y comprender la realidad utilizando Datos Abiertos. <b>180DATA</b> es un proyecto que cuenta con la financiación de ANII.</p>
+          <hr class="small">
+          <p>¿Querés más? <a href="http://data.180.com.uy" class="external-links">Descubri estadisticas de tu nombre en esta app.</a><p>
+          <hr class="visible-xs invisible">
         </div>
-        <div class="col-md-2"><img src="<%= asset_path('images/anii.png') %>" class="navbar-right logo"></div>
-     </div>
-    </div><!-- /.container -->
-
-    <div class="alternate-body">
-      <div class="container last-footer">
-      <div class="row">
-        <div class="col-md-6">
-          <p>Somos una organización de la sociedad civil que trabaja creando herramientas sociales por la transparencia, datos abiertos y acceso a la información.<p>
-          <img src="<%= asset_path('images/facebook.png') %>"> <img src="<%= asset_path('images/twitter.png') %>"> <img src="<%= asset_path('images/youtube.png') %>">
+        <div class="col-sm-2 col-xs-6 col-sm-pull-8">
+          <img class="img-responsive center-block" src="<%= asset_path('images/180DATA.png') %>" alt="180Data">
         </div>
-        <div class="col-md-3">
-          <a href="http://www.datauy.org"><img src="<%= asset_path('images/data-abajo.png') %>"></a>
-        </div>
-        <div class="col-md-3">
-          <a href="http://www.abrelatam.org/da"><img src="<%= asset_path('images/datos-abiertos.png') %>"></a>
+        <div class="col-sm-2 col-xs-6 text-right">
+          <a href="http://www.anii.org.uy/web/">
+            <img class="img-responsive center-block" src="<%= asset_path('images/anii.png') %>" alt="ANII, Agencia Nacional de Investigación e innovación">
+          </a>
         </div>
       </div>
     </div>
+
+    <div class="alternate-body">
+      <div class="container last-footer">
+        <div class="row Aligner">
+          <div class="col-md-6 col-sm-12">
+            <p>Somos una organización de la sociedad civil que trabaja creando herramientas sociales por la transparencia, datos abiertos y acceso a la información.<p>
+
+            <a href="https://www.facebook.com/DATAUruguay/" class="social-link">
+              <i class="icon icon-facebook"></i>
+            </a>
+            <a href="https://twitter.com/datauy/" class="social-link">
+              <i class="icon icon-twitter"></i>
+            </a>
+            <a href="http://www.youtube.com/user/DATAuruguay/" class="social-link">
+              <i class="icon icon-youtube"></i>
+            </a>
+          </div>
+          <div class="col-md-6 text-center">
+            <a href="http://www.datauy.org" style="margin-right: 35px;"><img src="<%= asset_path('images/data-abajo.png') %>"></a>
+            <a href="http://www.abrelatam.org/da"><img src="<%= asset_path('images/datos-abiertos.png') %>"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="small invisible">
+    <div class="container text-center">
+        <p>Este proyecto fue posible (en tiempo récord) gracias a la invalorable colaboración de <a href="https://twitter.com/hiroagustin">Agustín Díaz</a> y <a href="http://www.neo.com/offices/montevideo"><img src="<%= asset_path('images/neo.png') %>" alt="Neoneo"></a></p>
     </div>
   </footer>
 
-  <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
   <script src="<%= javascript_path('jquery.min.js') %>"></script>
   <script src="<%= javascript_path('bootstrap.min.js') %>"></script>
-  <!--<script src="<%= javascript_path('jquery.jqplot.min.js') %>"></script>
-  <script src="<%= javascript_path('jqplot-plugins/jqplot.highlighter.min.js') %>"></script>
-  <script src="<%= javascript_path('jqplot-plugins/jqplot.cursor.min.js') %>"></script>
-  <script src="<%= javascript_path('jqplot-plugins/jqplot.donutRenderer.min.js') %>"></script>
-  -->
-<script src="<%= javascript_path('webapp.js') %>"></script>
-<!--<script src="<%= javascript_path('bootstrap.min.js') %>"></script>-->
-  <script type="text/javascript" language="JavaScript1.3" src="http://b.scorecardresearch.com/c2/16973189/ct.js"></script>
-  
-  <!-- Tracking -->
+  <script src="<%= javascript_path('webapp.js') %>"></script>
   <script>
+    // Google Analytics Tracking
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    // ga('create', 'UA-34702401-3', '180.com.uy');
-    // ga('send', 'pageview');
+    ga('create', 'UA-34702401-3');
+    ga('send', 'pageview');
 
-    // ga('create', 'UA-41649441-2', '180.com.uy');
-    // ga('send', 'pageview');
+    // Facebook
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=585463884850643";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Twitter
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
   </script>
-  <!-- Begin Digital Analytix Tag --><script type="text/javascript">// <![CDATA[function udm_(a){var b="comScore=",c=document,d=c.cookie,e="",f="indexOf",g="substring",h="length",i=2048,j,k="&ns_",l="&",m,n,o,p,q=window,r=q.encodeURIComponent||escape;if(d[f](b)+1)for(o=0,n=d.split(";"),p=n[h];o<p;o++)m=n[o][f](b),m+1&&(e=l+unescape(n[o][g](m+b[h])));a+=k+"_t="+ +(new Date)+k+"c="+(c.characterSet||c.defaultCharset||"")+"&c8="+r(c.title)+e+"&c7="+r(c.URL)+"&c9="+r(c.referrer),a[h]>i&&a[f](l)>0&&(j=a[g](0,i-8).lastIndexOf(l),a=(a[g](0,j)+k+"cut="+r(a[g](j+1)))[g](0,i)),c.images?(m=new Image,q.ns_p||(ns_p=m),m.src=a):c.write("<","p","><",'img src="',a,'" height="1" width="1" alt="*"',"><","/p",">")}udm_('http'+(document.location.href.charAt(4)=='s'?'s://sb':'://b')+'.scorecardresearch.com/b?c1=2&c2=16973189&ns_site=180&name=portal.data');// ]]></script><noscript><p><img src="http://b.scorecardresearch.com/p?c1=2&c2=16973189&ns_site=180&name=portal.data" height="1" width="1" alt="*"></p></noscript><!-- End Digital Analytix Tag -->
+  <script src="http://b.scorecardresearch.com/c2/16973189/ct.js"></script>
+  <!-- Begin Digital Analytix Tag -->
+  <script>
+    // <![CDATA[function udm_(a){var b="comScore=",c=document,d=c.cookie,e="",f="indexOf",g="substring",h="length",i=2048,j,k="&ns_",l="&",m,n,o,p,q=window,r=q.encodeURIComponent||escape;if(d[f](b)+1)for(o=0,n=d.split(";"),p=n[h];o<p;o++)m=n[o][f](b),m+1&&(e=l+unescape(n[o][g](m+b[h])));a+=k+"_t="+ +(new Date)+k+"c="+(c.characterSet||c.defaultCharset||"")+"&c8="+r(c.title)+e+"&c7="+r(c.URL)+"&c9="+r(c.referrer),a[h]>i&&a[f](l)>0&&(j=a[g](0,i-8).lastIndexOf(l),a=(a[g](0,j)+k+"cut="+r(a[g](j+1)))[g](0,i)),c.images?(m=new Image,q.ns_p||(ns_p=m),m.src=a):c.write("<","p","><",'img src="',a,'" height="1" width="1" alt="*"',"><","/p",">")}udm_('http'+(document.location.href.charAt(4)=='s'?'s://sb':'://b')+'.scorecardresearch.com/b?c1=2&c2=16973189&ns_site=180&name=portal.data');// ]]>
+  </script>
+  <noscript>
+    <img src="http://b.scorecardresearch.com/p?c1=2&c2=16973189&ns_site=180&name=portal.data" height="1" width="1" alt="*">
+  </noscript>
+  <!-- End Digital Analytix Tag -->
 </body>
 </html>

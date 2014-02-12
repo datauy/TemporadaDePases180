@@ -1,135 +1,127 @@
 <%
-    ginecologia = prioridades.length == 0 || prioridades[:ginecologia]
-    pediatria = prioridades.length == 0 || prioridades[:pediatria]
-    fonasa = prioridades.length == 0 || prioridades[:fonasa]
+    ginecologia = prioridades.empty? || prioridades[:ginecologia]
+    pediatria = prioridades.empty? || prioridades[:pediatria]
+    fonasa = prioridades.empty? || prioridades[:fonasa]
+    prioridad = prioridades[:prioridad]
 %>
-
 <div class="alternate-body">
   <div class="container formulario">
     <h3 class="Mt-0 highlight text-center">Contestá estas preguntas y elegí una prioridad:</h3>
-    <hr class="invisible">
     <form id="preguntas-form" action="/departamento" method="POST" autocomplete="off" class="form-horizontal">
-      <div class="row">
-        <div class="col-md-6 text-right"> <!-- primera columna -->
-          <div class="">
+      <div class="row divided Aligner">
+        <div class="col-xs-6 text-right"> <!-- primera columna -->
+          <div class="form-control">
             Consultas de Ginecologia:
-            <label>
+            <label class="Fw-n Ml-10">
               Si <input type="radio" name="opcionGinecologia" id="ginecologiaRadioSi" value="true" <% if ginecologia %>checked<% end %>>
             </label>
-            <label>
+            <label class="Fw-n Ml-10">
               No <input type="radio" name="opcionGinecologia" id="ginecologiaRadioNo" value="false" <% if !ginecologia %>checked<% end %>>
             </label>
           </div>
-          <div class="">
+          <div class="form-control">
             Consultas de Pediatría:
-            <label>
+            <label class="Fw-n Ml-10">
               Si <input type="radio" name="opcionPediatria" id="pediatriaRadioSi" value="true" <% if pediatria %>checked<% end %>>
             </label>
-            <label>
+            <label class="Fw-n Ml-10">
               No <input type="radio" name="opcionPediatria" id="pediatriaRadioNo" value="false" <% if !pediatria %>checked<% end %>>
             </label>
             <!--<span class="help-tooltip help-icon" title="Vas a tener a niños afiliados a la mutualista?"></span>-->
           </div>
-          <div class="">
+          <div class="form-control">
             Afiliado de FONASA:
-            <label>
+            <label class="Fw-n Ml-10">
               Si <input type="radio" name="opcionFonasa" id="fonasaRadioSi" value="true" <% if fonasa %>checked<% end %>>
             </label>
-            <label>
+            <label class="Fw-n Ml-10">
               No <input type="radio" name="opcionFonasa" id="fonasaRadioNo" value="false" <% if !fonasa %>checked<% end %>>
             </label>
           </div>
-          <div class="">
-            Departamento:
-            <select id="departamento" name="departamento" placeholder=".col-xs-4">
-              <% ["artigas", "canelones", "cerro_largo", "colonia", "durazno", "flores", "florida", "lavalleja", "maldonado", "montevideo", "paysandu", "rio_negro", "rivera", "rocha", "salto", "san_jose", "soriano", "tacuarembo", "treinta_y_tres"].sort.each do |sel_departamento| %>
-                <option value="<%= sel_departamento %>" <% if departamento == sel_departamento %>selected="selected"<% end %>>
-                  <%= sel_departamento.capitalize! %>
-                </option>
-              <% end %>
-            </select>
+          <div class="form-control">
+            <label class="Fw-n" for="departamento">
+                Departamento:
+                <select id="departamento" name="departamento" placeholder=".col-xs-4">
+                  <% ["artigas", "canelones", "cerro_largo", "colonia", "durazno", "flores", "florida", "lavalleja", "maldonado", "montevideo", "paysandu", "rio_negro", "rivera", "rocha", "salto", "san_jose", "soriano", "tacuarembo", "treinta_y_tres"].sort.each do |sel_departamento| %>
+                    <option value="<%= sel_departamento %>" <% if departamento == sel_departamento %>selected="selected"<% end %>>
+                      <%= sel_departamento.capitalize! %>
+                    </option>
+                  <% end %>
+                </select>
+            </label>
           </div>
         </div> <!-- primera columna -->
-        <div class="col-md-6 text-left" style="border-left: 1px solid #d63d34;"> <!-- tercera columna -->
-          <div class="">
-            <label>
-              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="costo"> Precio de los tickets
+        <div class="col-xs-6 text-left">
+          <div class="form-control">
+            <label class="Fw-n">
+              <input type="radio" id="radioPrioridadC" class="" name="radioPrioridad" value="costo" <% if !prioridad || prioridad == 'costo' %>checked<% end %>> Precio de los tickets
             </label>
           </div>
-          <div class="">
-            <label>
-              <input type="radio" id="radioPrioridadT" name="radioPrioridad" value="tiempo"> Tiempos de espera para consulta
+          <div class="form-control">
+            <label class="Fw-n">
+              <input type="radio" id="radioPrioridadT" class="" name="radioPrioridad" value="tiempo" <% if prioridad == 'tiempo' %>checked<% end %>> Tiempos de espera para consulta
             </label>
           </div>
-          <div class="">
-           <label>
-              <input type="radio" id="radioPrioridadD" name="radioPrioridad" value="derechos"> Derechos de los usuarios
+          <div class="form-control">
+           <label class="Fw-n">
+              <input type="radio" id="radioPrioridadD" class="" name="radioPrioridad" value="derechos" <% if prioridad == 'derechos' %>checked<% end %>> Derechos de los usuarios
             </label>
           </div>
-          <div class="">
-            <label>
-              <input type="radio" id="radioPrioridadC" name="radioPrioridad" value="personal"> Cantidad de personal disponible
+          <div class="form-control">
+            <label class="Fw-n">
+              <input type="radio" id="radioPrioridadC" class="" name="radioPrioridad" value="personal" <% if prioridad == 'personal' %>checked<% end %>> Cantidad de personal disponible
             </label>
           </div>
         </div> <!-- tercera columna -->
       </div> <!-- row -->
-      <hr class="invisible">
       <button type="submit" class="btn btn-lg btn-danger center-block" style="padding: 10px 75px;">¡Buscar!</button>
     </form>
   </div>
 </div> <!-- formulario -->
 
-<section class="resultados" <% if prioridades.empty? %>style="display: none;" <% end %>>
-  <h3>
-    <% if (prioridades.length > 1) %> 
-    Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridades[:prioridad]] %>: 
+<% if !prioridades.empty? %>
+  <section class="resultados">
+    <% if (prioridades.length > 1) %>
+      <p class="h3 text-center jumbotron jumbotron-inverse Mb-0">Ranking de prestadores de salud de <span class="highlight"><%= departamento %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
     <% end %>
-  </h3>
 
-  <div id="carousel-resultados" class="carousel slide" data-ride="carousel" data-interval="false">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <% for i in 0..(mutualistas.length-1) do %>
-      <li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li>
-    <% end %>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-
-    <% for mutualista in mutualistas do %>
-      <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
-        <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
+    <div id="carousel-resultados" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
+      <!-- <ol class="carousel-indicators"><% for i in 0..(mutualistas.length-1) do %><li data-target="#carousel-resultados" data-slide-to="<%= i %>" <% if i == 1 %>class="active"<% end %>></li><% end %></ol> -->
+      <div class="carousel-inner">
+        <% for mutualista in mutualistas do %>
+          <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
+            <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+      <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-resultados" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  </section>
+
+  <div class="container">
+    <p class="Mb-0" style="padding: 25px 0;">Datos extraidos de la planilla de indicadores publicada por el <a href="http://msp.gub.uy">Ministerio de Salud Pública</a> <br> Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
   </div>
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
-    <img src="<%= asset_path('images/izquierda.png') %>">
-  </a>
-  <a class="right carousel-control" href="#carousel-resultados" data-slide="next">
-    <img src="<%= asset_path('images/derecha.png') %>">
-  </a>
-</div>
-
-  <section id="aclaraciones">
-  <p>Datos extraidos de la planilla de indicadores publicada por el <a href="http://msp.gub.uy">Ministerio de Salud Pública</a></p>
-    <p>Disponible para descarga, con mayor nivel de detalle e indicadores que los aqui publicados.</p>
-  </section>
-</section>
-
-<% if !prioridades.empty? %>
-  <section id="mequierocambiar">
-    <section class="col-md-6">
-      <h1>¡Me quiero cambiar!</h1>
-      <p>Para ésto es necesario presentarse en el prestador de salud elegido, personalmente.</p>
-    </section>
-    <section class="col-md-6 right">
-      <p>Recordá que sólo pueden cambiarse quienes tengan un <strong>mínimo de tres años en su prestador de salud actual</strong> y que <strong>sólo pueden hacerlos hasta el 28 de febrero.</strong>
-      </p>
-      <p><strong>¿Más dudas?</strong> Consultá en el sitio: <a class="button" href="http://www.msp.gub.uy">www.msp.gub.uy</a>
-      </p>
-    </section>
-  </section>
+  <div id="mequierocambiar" class="alternate-body">
+    <div class="container">
+      <div class="row Aligner">
+        <div class="col-sm-5">
+          <h2 class="h1 highlight Mt-0">¡Me quiero cambiar!</h2>
+          <p class="lead Mb-0">Para ésto es necesario presentarse en el prestador de salud elegido, personalmente.</p>
+        </div>
+        <div class="col-sm-7">
+          <p>Recordá que sólo pueden cambiarse quienes tengan un <b>mínimo de tres años en su prestador de salud actual</b> y que <b>sólo pueden hacerlos hasta el 28 de febrero.</b>
+          </p>
+          <hr class="small">
+          <p class="Mb-0"><b>¿Más dudas?</b> Consultá en el sitio: <a href="http://www.msp.gub.uy">www.msp.gub.uy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
