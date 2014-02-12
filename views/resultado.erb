@@ -1,89 +1,108 @@
-<table class="table tableStyle">
-        <tr class="table-headers">
-          <td class="table-mutualista header-left"><%= posicion %> - <%= mutualista["NOMBRE"] %></td>
-          <td class="header-right"></td>
-        </tr>
-        <tr>
-          <td class="table-prioridad table-results-left"><label class="table-result-label">Costo:</label></td>
-          <td>
-            <table class="table">
-              <tr>
-                <% mutualista["COSTO"].values().each do |valor| %>
-                  <td><%= valor %></td>
-                <% end %>
-                <td ></td>
-                
-              </tr>
-            </table>
-
-          </td>
-        </tr>
-        <tr>
-          <td class="table-prioridad table-results-left"><label class="table-result-label">Metas asistenciales:</label></td>
-          <td>
-            <table class="table">
-            <tr>
-              <% mutualista["METAS"].values().each do |valor| %>
-                <td><%= valor %></td>
-              <% end %>
-              <td></td>
-            </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td class="table-prioridad table-results-left"><label class="table-result-label">Tiempos de espera:</label></td>
-          <td>
-            <table class="table">
-            <tr>
-              <% mutualista["TIEMPOS_ESPERA"].values().each do |valor| %>
-                <td><%= valor %></td>
-              <% end %>
-              <td></td>
-            </tr>
-            </table>
-          </td>
-        </tr> 
-        <tr>
-          <td class="table-prioridad table-results-left"><label class="table-result-label">Satisfacción de usuarios:</label></td>
-          <td>
-            <table class="table">
-            <tr>
-              <% mutualista["SATISFACCION"].values().each do |valor| %>
-                <td><%= valor %></td>
-              <% end %>
-              <td></td>
-            </tr>
-            </table>
-          </td>
-        </tr> 
-        <tr>
-          <td class="table-prioridad  table-results-left"><label class="table-result-label"> Personal disponible:</label></td>
-          <td>
-            <table class="table">
-            <tr>
-              <% mutualista["PERSONAL"].values().each do |valor| %>
-                <td><%= valor %></td>
-              <% end %>
-              <td></td>
-            </tr>
-            </table>
-          </td>
-        </tr> 
-        <tr>
-          <td class="table-prioridad table-results-left"><label class="table-result-label"> Asignación de citas:</label></td>
-          <td>
-            <% if mutualista["CITAS_PERSONAL"] %><img src="<%= asset_path('images/personalmente.png') %>"><% end %>
-            <% if mutualista["CITAS_TELEFONICA"] %><img src="<%= asset_path('images/telefono.png') %>"><% end %>
-            <% if mutualista["CITAS_WEB"] %><img src="<%= asset_path('images/web.png') %>"><% end %>
-         </td>
-        </tr> 
-        <tr>
-          <td class="table-prioridad table-results-left"><label class="table-result-label"> Recordatorio de consultas:</label></td>
-          <td>
-            <% if mutualista["RECORDATORIO_TELEFONO"] %><img src="<%= asset_path('images/telefono.png') %>"><% end %>
-            <% if mutualista["RECORDATORIO_SMS"] %><img src="<%= asset_path('images/sms.png') %>"><% end %>
-            <% if mutualista["RECORDATORIO_CORREO"] %><img src="<%= asset_path('images/correo.png') %>"><% end %>
-            <% if !(mutualista["RECORDATORIO_TELEFONO"] || mutualista["RECORDATORIO_SMS"] || mutualista["RECORDATORIO_CORREO"]) %><img src="<%= asset_path('images/ninguno.png') %>"><% end %>
-        </tr>                
-      </table>
+<div class="container">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <b class="pull-right" style="color: black;">Rank</b>
+            <h4 class="panel-title"><%= posicion %> - <%= mutualista["NOMBRE"] %></h4>
+        </div>
+        <div class="panel-body">
+            <div class="row Mb-10">
+                <div class="col-xs-4 text-right"><b>Costo:</b></div>
+                <div class="col-xs-7">
+                    <div class="progress Mb-0">
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">10%</div>
+                        <div class="progress-bar progress-bar-warning" style="width: 35%">35%</div>
+                        <div class="progress-bar progress-bar-success" style="width: 20%">20%</div>
+                        <div class="progress-bar progress-bar-info" style="width: 15%">15%</div>
+                    </div>
+                </div>
+                <div class="col-xs-1 text-center">
+                    12
+                </div>
+            </div>
+            <div class="row Mb-10">
+                <div class="col-xs-4 text-right"><b>Metas asistenciales:</b></div>
+                <div class="col-xs-7">
+                    <div class="progress Mb-0">
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">10%</div>
+                        <div class="progress-bar progress-bar-warning" style="width: 35%">35%</div>
+                        <div class="progress-bar progress-bar-success" style="width: 20%">20%</div>
+                        <div class="progress-bar progress-bar-info" style="width: 15%">15%</div>
+                    </div>
+                </div>
+                <div class="col-xs-1 text-center">
+                    6
+                </div>
+            </div>
+            <div class="row Mb-10">
+                <div class="col-xs-4 text-right"><b>Tiempos de espera:</b></div>
+                <div class="col-xs-7">
+                    <div class="progress Mb-0">
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">10%</div>
+                        <div class="progress-bar progress-bar-warning" style="width: 35%">35%</div>
+                        <div class="progress-bar progress-bar-success" style="width: 20%">20%</div>
+                        <div class="progress-bar progress-bar-info" style="width: 15%">15%</div>
+                    </div>
+                </div>
+                <div class="col-xs-1 text-center">
+                    4
+                </div>
+            </div>
+            <div class="row Mb-10">
+                <div class="col-xs-4 text-right"><b>Satisfación de usuarios:</b></div>
+                <div class="col-xs-7">
+                    <div class="progress Mb-0">
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">10%</div>
+                        <div class="progress-bar progress-bar-warning" style="width: 35%">35%</div>
+                        <div class="progress-bar progress-bar-success" style="width: 20%">20%</div>
+                        <div class="progress-bar progress-bar-info" style="width: 15%">15%</div>
+                    </div>
+                </div>
+                <div class="col-xs-1 text-center">
+                    12
+                </div>
+            </div>
+            <div class="row Mb-10">
+                <div class="col-xs-4 text-right"><b>Personal disponible:</b></div>
+                <div class="col-xs-7">
+                    <div class="progress Mb-0">
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">10%</div>
+                        <div class="progress-bar progress-bar-warning" style="width: 35%">35%</div>
+                        <div class="progress-bar progress-bar-success" style="width: 20%">20%</div>
+                        <div class="progress-bar progress-bar-info" style="width: 15%">15%</div>
+                    </div>
+                </div>
+                <div class="col-xs-1 text-center">
+                    30
+                </div>
+            </div>
+            <div class="row Mb-10">
+                <div class="col-xs-4 text-right"><b>Asignación de citas:</b></div>
+                <div class="col-xs-7">
+                    <div class="progress Mb-0">
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">10%</div>
+                        <div class="progress-bar progress-bar-warning" style="width: 35%">35%</div>
+                        <div class="progress-bar progress-bar-success" style="width: 20%">20%</div>
+                        <div class="progress-bar progress-bar-info" style="width: 15%">15%</div>
+                    </div>
+                </div>
+                <div class="col-xs-1 text-center">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 text-right"><b>Recordatorio consultas:</b></div>
+                <div class="col-xs-7">
+                    <div class="progress Mb-0">
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">10%</div>
+                        <div class="progress-bar progress-bar-warning" style="width: 35%">35%</div>
+                        <div class="progress-bar progress-bar-success" style="width: 20%">20%</div>
+                        <div class="progress-bar progress-bar-info" style="width: 15%">15%</div>
+                    </div>
+                </div>
+                <div class="col-xs-1 text-center">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
