@@ -21,18 +21,18 @@
 
   <header class="alternate-body">
     <div class="container">
-      <div class="row Aligner">
-        <div class="col-xs-4 Aligner-item Aligner-item--bottom text-left">
-          <a href="http://ciencia.180.com.uy"><img src="<%= asset_path('images/180CIENCIA.png') %>" alt="180 Ciencia"></a>
+      <div class="row Aligner main-header">
+        <div class="col-sm-4 col-sm-push-8 Aligner-item--bottom">
+          <a href="http://www.datauy.org"><img class="img-responsive center-block sm-pull-right data" src="<%= asset_path('images/DATA_arriba.png') %>" alt="DATA"></a>
         </div>
-        <div class="col-xs-4 Aligner-item Aligner-item--bottom text-center">
+        <div class="col-sm-4 col-sm-pull-4 Aligner-item--bottom">
+          <a href="http://ciencia.180.com.uy"><img class="img-responsive center-block sm-pull-left" src="<%= asset_path('images/180CIENCIA.png') %>" alt="180 Ciencia"></a>
+        </div>
+        <div class="col-sm-4 col-sm-pull-4 Aligner-item--bottom">
           <div class="Aligner">
             <a href="https://twitter.com/share" class="twitter-share-button" data-text="¿Querés conocer qué mutualista te conviene? @DATAuy y @portal180 te lo muestran en base a datos." data-lang="es"></a>
-            <div class="fb-share-button" data-href="http://mutualistas.180.com.uy/" data-type="button_count"></div>
+            <div class="fb-share-button" data-href="http://mutualistas.datauy.org/" data-type="button_count"></div>
           </div>
-        </div>
-        <div class="col-xs-4 Aligner-item Aligner-item--bottom text-right">
-          <a href="http://www.datauy.org"><img src="<%= asset_path('images/DATA_arriba.png') %>" alt="DATA" style="margin-top: -5px"></a>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
         <div class="col-sm-3">
           <img class="img-responsive center-block" src="<%= asset_path('images/temporada_de_pases.png') %>" alt="Temporada de Pases">
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 sm-ta-l text-center">
           <h1 class="highlight" style="font-size: 38px;">¿Me conviene cambiarme?</h1>
           <h2>¿A qué mutualista?</h2>
           <h3 class="h2">¿Es buena para mi familia?</h3>
@@ -81,8 +81,8 @@
 
     <div class="alternate-body">
       <div class="container last-footer">
-        <div class="row Aligner">
-          <div class="col-md-6 col-sm-12">
+        <div class="row">
+          <div class="col-sm-7">
             <p>Somos una organización de la sociedad civil que trabaja creando herramientas sociales por la transparencia, datos abiertos y acceso a la información.<p>
 
             <a href="https://www.facebook.com/DATAUruguay/" class="social-link">
@@ -95,9 +95,12 @@
               <i class="icon icon-youtube"></i>
             </a>
           </div>
-          <div class="col-md-6 text-center">
-            <a href="http://www.datauy.org" style="margin-right: 35px;"><img src="<%= asset_path('images/data-abajo.png') %>"></a>
-            <a href="http://www.abrelatam.org/da/"><img src="<%= asset_path('images/datos-abiertos.png') %>"></a>
+          <div class="col-sm-3">
+            <a href="http://www.datauy.org"><img class="img-responsive center-block" src="<%= asset_path('images/data-abajo.png') %>"></a>
+            <hr class="Mt-0 invisible visible-xs">
+          </div>
+          <div class="col-sm-2">
+            <a href="http://www.abrelatam.org/da/"><img class="img-responsive center-block" src="<%= asset_path('images/datos-abiertos.png') %>"></a>
           </div>
         </div>
       </div>
@@ -109,7 +112,6 @@
   </footer>
 
   <script src="<%= javascript_path('jquery.min.js') %>"></script>
-  <!-- <script src="<%= javascript_path('bootstrap.min.js') %>"></script> -->
   <!-- This files should be concated and minified -->
   <script src="<%= javascript_path('transition.js') %>"></script>
   <script src="<%= javascript_path('carousel.js') %>"></script>
