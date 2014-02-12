@@ -18,7 +18,7 @@ module Helpers
 
         def filtrar_variables(prioridades)
 
-            todas_las_variables = ['META_NINOS', 'META_EMBARAZADAS', 'META_ ADOLESCENTE', ' META_ ADULTO', 'META_ADULTO_MAYOR', 
+            todas_las_variables = ['META_NINOS', 'META_EMBARAZADAS', 'META_ADOLESCENTE', ' META_ADULTO', 'META_ADULTO_MAYOR', 
                 'MEDICAMENTOS_GENERAL', 'MEDICAMENTOS_GENERAL_FONASA', 'MEDICAMENTOS_TOPEADOS', ' MEDICAMENTOS_TOPEADOS_FONASA', 
                 'CONSULTA_GENERAL', 'CONSULTA_GENERAL_FONASA', 'CONSULTA_PEDIATRIA', 'CONSULTA_PEDIATRIA_FONASA', 'CONTROL_EMBARAZO', 
                 'CONTROL_EMBARAZO_FONASA', 'CONSULTA_GINECOLOGIA', 'CONSULTA_GINECOLOGIA_FONASA', 'CONSULT_OTR_ESP', 'CONSULT_OTR_ESP_FONASA',
@@ -29,7 +29,7 @@ module Helpers
                 'ESTUDIO_IMAGEN_ABDOMEN_FONASA', 'ESTUDIO_IMAGEN_TORAX', 'ESTUDIO_IMAGEN_TORAX_FONASA ESTUDIO_IMAGEN_COLORECTAL', 
                 'ESTUDIO_IMAGEN_COLORECTAL_FONASA', 'ESTUDIO_RESONANCIA', 'ESTUDIO_RESONANCIA_FONASA', ' ESTUDIO_TOMOGRAFIA', 
                 'ESTUDIO_TOMOGRAFIA_FONASA', 'ESTUDIO_LABORATORIO', 'ESTUDIO_LABORATORIO_FONASA', 'TIEMPO_ESP_MED_GEN', 'TIEMPO_ESP_PEDIATRIA',
-                'TIEMPO_ESP _CIRUG', 'TIEMPO_ESP_GIN', 'ENT_QUEJAS', 'ENT_DERECHOS', 'PERSONAL_CANT_MED', 'PERSONAL_CANT_GIN', 
+                'TIEMPO_ESP_CIRUG', 'TIEMPO_ESP_GIN', 'ENT_QUEJAS', 'ENT_DERECHOS', 'PERSONAL_CANT_MED', 'PERSONAL_CANT_GIN', 
                 'PERSONAL_CANT_PED', 'PERSONAL_CANT_ENF', ' PERSONAL_CANT_LICENF', 'CITAS_PERSONAL', 'CITAS_TELEFONICA', 'CITAS_WEB', 
                 'RECORDATORIO_TELEFONO', 'RECORDATORIO_SMS', 'RECORDATORIO_CORREO', 'INCOMPLETA']
 
@@ -42,7 +42,7 @@ module Helpers
 
             end
             if not prioridades[:pediatria]
-                variables_a_ignorar = variables_a_ignorar + ['META_NINOS', 'META_ ADOLESCENTE', 'CONSULTA_PEDIATRIA', 'CONSULTA_PEDIATRIA_FONASA', 
+                variables_a_ignorar = variables_a_ignorar + ['META_NINOS', 'META_ADOLESCENTE', 'CONSULTA_PEDIATRIA', 'CONSULTA_PEDIATRIA_FONASA', 
                     'TIEMPO_ESP_PEDIATRIA']
             end
             if prioridades[:fonasa]
@@ -77,7 +77,7 @@ module Helpers
                     'ESTUDIO_RESONANCIA_FONASA', 'ESTUDIO_TOMOGRAFIA', 'ESTUDIO_TOMOGRAFIA_FONASA', 'ESTUDIO_LABORATORIO', 
                     'ESTUDIO_LABORATORIO_FONASA'] - variables_a_ignorar
             when 'tiempo'
-                variables = ['TIEMPO_ESP_MED_GEN', 'TIEMPO_ESP_PEDIATRIA', 'TIEMPO_ESP _CIRUG', 'TIEMPO_ESP_GIN'] - variables_a_ignorar
+                variables = ['TIEMPO_ESP_MED_GEN', 'TIEMPO_ESP_PEDIATRIA', 'TIEMPO_ESP_CIRUG', 'TIEMPO_ESP_GIN'] - variables_a_ignorar
             when 'derechos'
                 variables = ['ENT_QUEJAS', 'ENT_DERECHOS'] - variables_a_ignorar
             when 'personal'
@@ -141,7 +141,7 @@ module Helpers
                 else # personal o derechos
                     mutualistas_completas = mutualistas_completas.sort_by { |m| m["RANKING"] }.reverse
                 end
-                
+
                 mutualistas = mutualistas_completas + mutualistas_incompletas
 
                 return mutualistas
