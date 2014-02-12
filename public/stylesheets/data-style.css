@@ -32,7 +32,7 @@ h2, .h2 {
     color: #d63d34 !important;
 }
 
-/* Extends ****************************************************************/
+/* Overrides ****************************************************************/
 
 .form-control {
     background: transparent;
@@ -40,6 +40,30 @@ h2, .h2 {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
+ @media (max-width: 768px) { 
+     .jumbotron {
+        padding: 0;
+     } 
+ }
+
+ .label {
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 12px;
+    height: 24px;
+    line-height: 25px;
+    padding: 0;
+    width: 24px;
+ }
+
+ .progress {
+    height: 22px;
+ }
+
+ .progress-bar {
+    line-height: 22px;
+ }
 
 .carousel-control {
     background: none !important;
@@ -56,15 +80,11 @@ h2, .h2 {
     color: #d63d34;
 }
 
+/* Extends ****************************************************************/
+
 .jumbotron-inverse {
     background-color: white;
 }
-
- @media (max-width: 768px) { 
-     .jumbotron {
-        padding: 0;
-     } 
- }
 
  .progress-bar-kore {
     background-color: #001F3F;
