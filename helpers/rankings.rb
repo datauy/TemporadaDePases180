@@ -94,7 +94,7 @@ module Helpers
             ranking = 0
 
             for variable in variables do 
-                ranking = ranking +  mutualista[variable].to_i
+                ranking = ranking +  mutualista[variable].to_f
             end
 
             return ranking
