@@ -52,4 +52,8 @@ class App < Sinatra::Base
     end
   end
 
+  get '/como_calculamos' do
+    erb(:'como_calculamos.html', layout: :'layout.html')
+  end
+
 end
