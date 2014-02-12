@@ -5,5 +5,6 @@ Para correr en desarrollo
 
 ```
 bundle install
+bower install
 bundle exec shotgun -p 9393
 ```
