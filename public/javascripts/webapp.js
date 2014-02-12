@@ -37,7 +37,8 @@ jQuery(function ($) {
        *
        */
       bindEvents: function () {
-        var $form = $("#preguntas-form");
+        var $form = $("#preguntas-form")
+        ,   self = this;
 
         $form.submit(function (event) {
           var departamento = $("#departamento").val()
@@ -61,7 +62,14 @@ jQuery(function ($) {
 
             //TODO: prioridad puede ser uno de estos: costo, tiempo, derechos, personal
 
-            document.location.href = url;
+            if (!!(window.history && history.pushState))
+                history.pushState(null, null, url);
+            
+            $('#js-ajax-resultados').empty().addClass('loading').load(url + ' #js-ajax-resultados', function ()
+            {
+                self.tooltips();
+                $(this).removeClass('loading');
+            });
           }
           else {
             this._displayError({ type: "invalid_departamento" });
