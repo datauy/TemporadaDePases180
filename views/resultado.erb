@@ -19,10 +19,10 @@
                 <div class="col-xs-4 text-right"><b>Costo:</b></div>
                 <div class="col-xs-7">
                     <div class="progress Mb-0">
-                        <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Medicamentos" style="width: <%= (costos['MEDICAMENTOS'].to_f * 100)/costo_max %>%">$<%= costos['MEDICAMENTOS'] %></div>
-                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Consultas no urgentes" style="width: <%= (costos['CONSULTAS_NO_URGENTES'].to_f * 100)/costo_max %>%">$<%= costos['CONSULTAS_NO_URGENTES'] %></div>
-                        <div class="progress-bar progress-bar-success" data-toggle="tooltip" title="Consultas urgentes" style="width: <%= (costos['CONSULTAS_URGENTES'].to_f * 100)/costo_max %>%">$<%= costos['CONSULTAS_URGENTES'] %></div>
-                        <div class="progress-bar progress-bar-info" data-toggle="tooltip" title="Estudios y laboratorios" style="width: <%= (costos['ESTUDIOS_Y_LABORATORIOS'].to_f * 100)/costo_max %>%">$<%= costos['ESTUDIOS_Y_LABORATORIOS'] %></div>
+                        <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Medicamentos" style="min-width: 5%; width: <%= (costos['MEDICAMENTOS'].to_f * 100)/costo_max %>%">$<%= costos['MEDICAMENTOS'] %></div>
+                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Consultas no urgentes" style="min-width: 5%; width: <%= (costos['CONSULTAS_NO_URGENTES'].to_f * 100)/costo_max %>%">$<%= costos['CONSULTAS_NO_URGENTES'] %></div>
+                        <div class="progress-bar progress-bar-success" data-toggle="tooltip" title="Consultas urgentes" style="min-width: 5%; width: <%= (costos['CONSULTAS_URGENTES'].to_f * 100)/costo_max %>%">$<%= costos['CONSULTAS_URGENTES'] %></div>
+                        <div class="progress-bar progress-bar-info" data-toggle="tooltip" title="Estudios y laboratorios" style="min-width: 5%; width: <%= (costos['ESTUDIOS_Y_LABORATORIOS'].to_f * 100)/costo_max %>%">$<%= costos['ESTUDIOS_Y_LABORATORIOS'] %></div>
                     </div>
                 </div>
                 <div class="col-xs-1 text-center"></div>
@@ -32,10 +32,10 @@
                 <div class="col-xs-7">
                     <div class="progress Mb-0">
                         <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Niños" style="width: <%= metas['NINOS'].to_f * 0.2 %>%"><%= metas['NINOS'] %></div>
-                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Embarazadas" style="width: <%= metas['EMBARAZADAS'].to_f * 0.2 %>%"><%= metas['EMBARAZADAS'] %></div>
-                        <div class="progress-bar progress-bar-success" data-toggle="tooltip" title="Adolescentes" style="width: <%= metas['ADOLESCENTE'].to_f * 0.2 %>%"><%= metas['ADOLESCENTE'] %></div>
-                        <div class="progress-bar progress-bar-info" data-toggle="tooltip" title="Adultos" style="width: <%= metas['ADULTO'].to_f * 0.2 %>%"><%= metas['ADULTO'] %></div>
-                        <div class="progress-bar progress-bar-kore" data-toggle="tooltip" title="Adultos mayores" style="width: <%= metas['ADULTO_MAYOR'].to_f * 0.2 %>%"><%= metas['ADULTO_MAYOR'] %></div>
+                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Embarazadas" style="min-width: 5%; width: <%= metas['EMBARAZADAS'].to_f * 0.2 %>%"><%= metas['EMBARAZADAS'] %></div>
+                        <div class="progress-bar progress-bar-success" data-toggle="tooltip" title="Adolescentes" style="min-width: 5%; width: <%= metas['ADOLESCENTE'].to_f * 0.2 %>%"><%= metas['ADOLESCENTE'] %></div>
+                        <div class="progress-bar progress-bar-info" data-toggle="tooltip" title="Adultos" style="min-width: 5%; width: <%= metas['ADULTO'].to_f * 0.2 %>%"><%= metas['ADULTO'] %></div>
+                        <div class="progress-bar progress-bar-kore" data-toggle="tooltip" title="Adultos mayores" style="min-width: 5%; width: <%= metas['ADULTO_MAYOR'].to_f * 0.2 %>%"><%= metas['ADULTO_MAYOR'] %></div>
                     </div>
                 </div>
                 <div class="col-xs-1 text-center"></div>
@@ -56,8 +56,8 @@
                 <div class="col-xs-4 text-right"><b>Satisfación de usuarios:</b></div>
                 <div class="col-xs-7">
                     <div class="progress Mb-0">
-                        <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Quejas" style="width: <%= satisfaccion['QUEJAS'].to_f * 0.5 %>%"><%= satisfaccion['QUEJAS'] %></div>
-                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Derechos" style="width: <%= satisfaccion['DERECHOS'].to_f * 0.5 %>%"><%= satisfaccion['DERECHOS'] %></div>
+                        <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Quejas" style="min-width: 5%; width: <%= satisfaccion['QUEJAS'].to_f * 0.5 %>%"><%= satisfaccion['QUEJAS'] %></div>
+                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Derechos" style="min-width: 5%; width: <%= satisfaccion['DERECHOS'].to_f * 0.5 %>%"><%= satisfaccion['DERECHOS'] %></div>
                     </div>
                 </div>
                 <div class="col-xs-1 text-center"></div>
@@ -66,11 +66,11 @@
                 <div class="col-xs-4 text-right"><b>Personal disponible:</b></div>
                 <div class="col-xs-7">
                     <div class="progress Mb-0">
-                        <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Medicos" style="width: <%= ( personal['MEDICOS'].to_f * 100 )/personal_max%>%"><%= personal['MEDICOS'] %></div>
-                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Ginecologos" style="width: <%= ( personal['GINECOLOGOS'].to_f * 100 )/personal_max%>%"><%= personal['GINECOLOGOS'] %></div>
-                        <div class="progress-bar progress-bar-success" data-toggle="tooltip" title="Pediatras" style="width: <%= ( personal['PEDIATRAS'].to_f * 100 )/personal_max%>%"><%= personal['PEDIATRAS'] %></div>
-                        <div class="progress-bar progress-bar-info" data-toggle="tooltip" title="Enfermeros" style="width: <%= ( personal['ENFERMEROS'].to_f * 100 )/personal_max%>%"><%= personal['ENFERMEROS'] %></div>
-                        <div class="progress-bar progress-bar-kore" data-toggle="tooltip" title="Licenciados de Enfermeria" style="width: <%= ( personal['LICENFER'].to_f * 100 )/personal_max%>%"><%= personal['LICENFER'] %></div>
+                        <div class="progress-bar progress-bar-danger" data-toggle="tooltip" title="Medicos" style="min-width: 5%; width: <%= ( personal['MEDICOS'].to_f * 100 )/personal_max%>%"><%= personal['MEDICOS'] %></div>
+                        <div class="progress-bar progress-bar-warning" data-toggle="tooltip" title="Ginecologos" style="min-width: 5%; width: <%= ( personal['GINECOLOGOS'].to_f * 100 )/personal_max%>%"><%= personal['GINECOLOGOS'] %></div>
+                        <div class="progress-bar progress-bar-success" data-toggle="tooltip" title="Pediatras" style="min-width: 5%; width: <%= ( personal['PEDIATRAS'].to_f * 100 )/personal_max%>%"><%= personal['PEDIATRAS'] %></div>
+                        <div class="progress-bar progress-bar-info" data-toggle="tooltip" title="Enfermeros" style="min-width: 5%; width: <%= ( personal['ENFERMEROS'].to_f * 100 )/personal_max%>%"><%= personal['ENFERMEROS'] %></div>
+                        <div class="progress-bar progress-bar-kore" data-toggle="tooltip" title="Licenciados de Enfermeria" style="min-width: 5%; width: <%= ( personal['LICENFER'].to_f * 100 )/personal_max%>%"><%= personal['LICENFER'] %></div>
                     </div>
                 </div>
                 <div class="col-xs-1 text-center"></div>
