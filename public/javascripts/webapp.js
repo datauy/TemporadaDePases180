@@ -31,6 +31,7 @@ jQuery(function ($) {
        */
       initialize: function () {
         this.bindEvents();
+        this.tooltips();
       },
       /**
        *
@@ -117,6 +118,11 @@ jQuery(function ($) {
         $form.find(".form-field.error").removeClass("error");
         $form.find(".form-error").remove();
       }
+
+    ,   tooltips: function ()
+        {
+            $('#carousel-resultados').find('[data-toggle="tooltip"]').tooltip();
+        }
     };
 
   App.initialize();
