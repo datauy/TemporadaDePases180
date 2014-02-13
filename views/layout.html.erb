@@ -1,14 +1,22 @@
 <!doctype html>
-<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="es"> <![endif]-->
-<!--[if gt IE 10]><!--> <html class="no-js" lang="es" dir="ltr"> <!--<![endif]-->
+<html class="no-js" lang="es" dir="ltr" prefix="og:http://ogp.me/ns/website#">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Temporada de Pases - 180 Ciencia - DATA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Temporada de Pases - 180 Ciencia - DATA</title>
 
   <meta name="description" content="Visualización de datos sobre mutualistas en Uruguay">
   <meta name="keywords" content="data,mutualistas,montevideo,uruguay,anii,ministerio de salud publica,msp">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Temporada de Pases - 180 Ciencia - DATA">
+  <meta property="og:url" content="http://mutualistas.datauy.org/">
+  <meta property="og:description" content="Visualización de datos sobre mutualistas en Uruguay">
+  <meta property="og:image" itemprop="image" content="<%= asset_path('images/temporada_de_pases.png') %>">
+  <meta property="og:site_name" content="mutualistas.datauy.org">
 
   <link href="<%= stylesheet_path('styles.css') %>" rel="stylesheet">
 </head>
@@ -21,14 +29,14 @@
     <div class="container">
       <div class="row Aligner main-header">
         <div class="col-sm-4 col-sm-push-8 Aligner-item--bottom">
-          <a href="http://www.datauy.org"><img class="img-responsive center-block sm-pull-right data" src="<%= asset_path('images/DATA_arriba.png') %>" alt="DATA"></a>
+          <a href="http://www.datauy.org/"><img class="img-responsive center-block sm-pull-right data" src="<%= asset_path('images/DATA_arriba.png') %>" alt="DATA"></a>
         </div>
         <div class="col-sm-4 col-sm-pull-4 Aligner-item--bottom">
-          <a href="http://ciencia.180.com.uy"><img class="img-responsive center-block sm-pull-left" src="<%= asset_path('images/180CIENCIA.png') %>" alt="180 Ciencia"></a>
+          <a href="http://ciencia.180.com.uy/"><img class="img-responsive center-block sm-pull-left" src="<%= asset_path('images/180CIENCIA.png') %>" alt="180 Ciencia"></a>
         </div>
         <div class="col-sm-4 col-sm-pull-4 Aligner-item--bottom">
           <div class="Aligner">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-text="¿Querés conocer qué mutualista te conviene? @DATAuy y @portal180 te lo muestran en base a datos." data-lang="es"></a>
+            <a href="https://twitter.com/share/" class="twitter-share-button" data-text="¿Querés conocer qué mutualista te conviene? @DATAuy y @portal180 te lo muestran en base a datos." data-lang="es"></a>
             <div class="fb-share-button" data-href="http://mutualistas.datauy.org/" data-type="button_count"></div>
           </div>
         </div>
@@ -63,7 +71,7 @@
         <div class="col-sm-8 col-sm-push-2 col-xs-12">
           <p>180 CIENCIA y DATA trabajan juntos en el proyecto <span class="180data">180DATA</span> para crear aplicaciones periodisticas que ayuden a descubrir y comprender la realidad utilizando Datos Abiertos. <b>180DATA</b> es un proyecto que cuenta con la financiación de ANII.</p>
           <hr class="small">
-          <p>¿Querés más? <a href="http://data.180.com.uy" class="external-links">Descubri estadisticas de tu nombre en esta app.</a><p>
+          <p>¿Querés más? <a href="http://data.180.com.uy/" class="external-links">Descubri estadisticas de tu nombre en esta app.</a><p>
           <hr class="visible-xs invisible">
         </div>
         <div class="col-sm-2 col-xs-6 col-sm-pull-8">
@@ -94,7 +102,7 @@
             </a>
           </div>
           <div class="col-sm-3">
-            <a href="http://www.datauy.org"><img class="img-responsive center-block" src="<%= asset_path('images/data-abajo.png') %>"></a>
+            <a href="http://www.datauy.org/"><img class="img-responsive center-block" src="<%= asset_path('images/data-abajo.png') %>"></a>
             <hr class="Mt-0 invisible visible-xs">
           </div>
           <div class="col-sm-2">
@@ -105,7 +113,7 @@
     </div>
     <hr class="small invisible">
     <div class="container text-center">
-        <p>Este proyecto fue posible (en tiempo récord) gracias a la invalorable colaboración de <a href="https://twitter.com/hiroagustin">Agustín Díaz</a> y <a href="http://www.neo.com/offices/montevideo"><img src="<%= asset_path('images/neo.png') %>" alt="Neoneo"></a></p>
+        <p>Este proyecto fue posible (en tiempo récord) gracias a la invalorable colaboración de <a href="https://twitter.com/hiroagustin/">Agustín Díaz</a> y <a href="http://www.neo.com/offices/montevideo/"><img src="<%= asset_path('images/neo.png') %>" alt="Neoneo"></a></p>
     </div>
   </footer>
 
