@@ -60,16 +60,17 @@ jQuery(function ($) {
             url = "/departamento/" + departamento;
             url += "?ginecologia=" + ginecologia + "&pediatria=" + pediatria + "&fonasa=" + fonasa + "&prioridad=" + prioridad
 
-            document.location.href = url;
+            if (!!(window.history && history.pushState))
+                history.pushState(null, null, url);
             
-            // if (!!(window.history && history.pushState))
-            //     history.pushState(null, null, url);
-            
-            // $('#js-ajax-resultados').empty().addClass('loading').load(url + ' #js-ajax-resultados', function ()
-            // {
-            //     self.tooltips();
-            //     $(this).removeClass('loading');
-            // });
+            $('#js-ajax-resultados').empty().addClass('loading').load(url + ' #js-ajax-resultados', function ()
+            {
+                $(this).removeClass('loading');
+                self.tooltips();
+            }, function ()
+            {
+                location.assign(url);
+            });
           }
           else {
             this._displayError({ type: "invalid_departamento" });

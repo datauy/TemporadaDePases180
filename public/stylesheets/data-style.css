@@ -234,6 +234,14 @@ h2, .h2 {
     color: #004590;
 }
 
+.loading-meter {
+    display: none;
+}
+
+.loading .loading-meter {
+    display: block;
+}
+
 /* Shame ****************************************************************/
 
 .main-header > div {
