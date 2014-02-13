@@ -31,6 +31,7 @@ jQuery(function ($) {
        */
       initialize: function () {
         this.bindEvents();
+        this.bindDom();
         this.tooltips();
       },
       /**
@@ -63,10 +64,11 @@ jQuery(function ($) {
             if (!!(window.history && history.pushState))
               history.pushState(null, null, url);
 
-            $('#js-ajax-resultados').empty().addClass('loading')
+            this.$container.addClass('loading');
+            this.$resultados.empty()
               .load(url + ' #js-ajax-resultados', function (response, status)
               {
-                $(this).removeClass('loading');
+                self.$container.addClass('loaded').removeClass('loading');
 
                 if (status === 'success')
                   self.tooltips();
@@ -130,9 +132,15 @@ jQuery(function ($) {
         $form.find(".form-error").remove();
       }
 
+    , bindDom: function ()
+      {
+        this.$resultados = $('#js-ajax-resultados');
+        this.$container = this.$resultados.closest('#js-ajax-resultados-container');
+      }
+
     , tooltips: function ()
       {
-        $('#carousel-resultados').find('[data-toggle="tooltip"]').tooltip();
+        this.$resultados.find('[data-toggle="tooltip"]').tooltip();
       }
     };
 

@@ -79,61 +79,59 @@
   </div>
 </div> <!-- formulario -->
 
-<section id="js-ajax-resultados" class="resultados">
-
-  <% if !prioridades.empty? %>
-    <% if (prioridades.length > 1) %>
-      <p class="h3 text-center jumbotron jumbotron-inverse Mt-0 Mb-0">Ranking de prestadores de salud de <span class="highlight"><%= departamentos[departamento] %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
-    <% end %>
-  <% end %>
-  
+<section id="js-ajax-resultados-container" class="resultados <%= !prioridades.empty? ? 'loaded' : '' %>">
   <div class="container loading-meter">
     <hr class="small invisible">
     <div class="progress progress-striped active Mb-0">
       <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
     </div>
   </div>
+  
+  <div id="js-ajax-resultados">
+    <% if !prioridades.empty? %>
+      <% if (prioridades.length > 1) %>
+        <hr class="small visible-xs invisible">
+        <p class="h3 text-center jumbotron jumbotron-inverse Mt-0 Mb-0">Ranking de prestadores de salud de <span class="highlight"><%= departamentos[departamento] %></span>, considerando <span class="highlight">consultas<% if ginecologia %> ginecologicas<% end %></span><% if pediatria %> y <span class="highlight">pediatría</span><% end %><% if fonasa %> para <span class="highlight">afiliados por FONASA</span><% end %>, priorizando <span class="highlight"><%= {'costo' => 'precio de los tickets', 'tiempo' => 'tiempo de espera', 'derechos' => 'derechos de los usuarios', 'personal' => 'cantidad de personal disponbile'}[prioridad] %></span>:</p>
+      <% end %>
 
-  <% if !prioridades.empty? %>
-    <div id="carousel-resultados" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
-      <div class="carousel-inner">
-        <% for mutualista in mutualistas do %>
-          <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
-            <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
-          </div>
-        <% end %>
+      <div id="carousel-resultados" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
+        <div class="carousel-inner">
+          <% for mutualista in mutualistas do %>
+            <div class="item<% if mutualista == mutualistas.first %> active<% end %>">
+              <%= partial :resultado, locals: { mutualista: mutualista, :posicion => mutualistas.index(mutualista)+1 } %>
+            </div>
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-resultados" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
       </div>
-      <a class="left carousel-control" href="#carousel-resultados" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-      <a class="right carousel-control" href="#carousel-resultados" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-      </a>
-    </div>
-  <% end %>
-</section>
-    
-<% if !prioridades.empty? %>
-  <div class="container">
+    <% end %>
+  </div>
+
+  <div class="container visible-loaded">
     <div style="padding: 25px 0;">
       <p>Datos extraídos de la planilla de indicadores publicada por el <a href="http://www.msp.gub.uy/noticia/comienza-el-per%C3%ADodo-de-movilidad-regulada-para-usuarios-fonasa">Ministerio de Salud Pública.</a>, disponible para <a href="http://www.msp.gub.uy/sites/default/files/archivos_adjuntos/Movilidad%20Regulada_0.xls">descarga</a> con mayor nivel de detalle e indicadores que los aqui publicados.</p>
       <p class="Mb-0">Las mutualistas con datos faltantes de cualquier tipo son penalizadas y enviadas al final del ranking. <a title="Para cada indicador tomamos sus valores y establecimos un promedio. Por ejemplo, “estudios y laboratorio” es un promedio de todos los posibles estudios y análisis que se pueden realizar en un prestador de servicio. Si para el usuario la prioridad es pagar menos costo en medicamentos, el prestador que en promedio cobre menos será la primera opción que visualice. En el caso de los prestadores de servicio que no brindaron datos al MSP o brindaron datos de forma parcial hemos decidido indicar que no no han provisto datos con un s/d y quedan excluídos del cálculo. Son mostrados al final de cada opción con la información relevante. Algunos indicadores proporcionados por el MSP no han sido incluidos por no considerarlos relevantes o no contener toda la información requerida." href="/como_calculamos">Conocé cómo construimos estos números o hacenos llegar tus dudas/sugerencias.</a></p>
     </div>
   </div>
 
-  <div id="mequierocambiar" class="alternate-body">
+  <div id="mequierocambiar" class="alternate-body visible-loaded">
     <div class="container">
       <div class="row Aligner">
         <div class="col-sm-5">
-          <h2 class="h1 highlight Mt-0">¡Me quiero cambiar!</h2>
+          <h2 class="h1 highlight Mt-0 text-center sm-ta-l">¡Me quiero cambiar!</h2>
           <p class="lead Mb-0">Para ésto es necesario presentarse en el prestador de salud elegido, personalmente.</p>
         </div>
         <div class="col-sm-7">
           <p>Recordá que sólo pueden cambiarse quienes tengan un <b>mínimo de tres años en su prestador de salud actual</b> y que <b>sólo pueden hacerlo hasta el 28 de febrero.</b></p>
           <hr class="small">
-          <p class="Mb-0"><b>¿Más dudas?</b> Consultá en el sitio: <a href="http://www.msp.gub.uy">www.msp.gub.uy</a></p>
+          <p class="Mb-0"><b>¿Más dudas?</b> Consultá en el sitio: <a href="http://www.msp.gub.uy/">www.msp.gub.uy</a></p>
         </div>
       </div>
     </div>
   </div>
-<% end %>
+</section>
