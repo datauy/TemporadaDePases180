@@ -121,6 +121,7 @@ h2, .h2 {
 
 @media (max-width: 767px) {
     .panel {
+        border-radius: 0;
         border-width: 1px 0;
     }
 }
@@ -239,6 +240,14 @@ h2, .h2 {
 }
 
 .loading .loading-meter {
+    display: block;
+}
+
+.visible-loaded {
+    display: none;
+}
+
+.loaded .visible-loaded {
     display: block;
 }
 
